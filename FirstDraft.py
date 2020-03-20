@@ -39,7 +39,7 @@ import asyncio
 lst88 = ["Pear", "Apricot", "apple", "Cherry", "Apple", "Apple"]
 lst88.sort(key=lambda x: x.upper())
 
-lst88.sort(key=lambda x: x[1:4].upper())
+lst88.sort(key=lambda x: x[1:4].upper())   # order by substring 
 
 
 print(lst88)

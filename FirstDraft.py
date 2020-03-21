@@ -31,6 +31,96 @@ import asyncio
 #
 # pass
 #
+# lst77 = ["?", "!", ".", ":", ";", ","]
+lst77 = "?!,.:;-_@()"
+str55 = "At 11 am local time Friday, major national  and  regional radio stations broadcast the country's national anthem, allowing residents in isolation to listen and sing together from behind closed doors."
+for x in lst77:
+    str55 = str55.replace(x, " ")
+
+lst55 = str55.split()
+
+
+with open("C:\\Users\\Mayya\\Documents\\PythonProjData\\Article01.txt", errors="replace") as f:
+    str55 = f.read()
+
+for x in lst77:
+    str55 = str55.replace(x, " ")
+
+lst55 = str55.split()
+for i in range(0, len(lst55)):
+    lst55[i] = lst55[i].lower()
+
+dct_word_freq = dict()
+
+for item in lst55:
+    if item not in dct_word_freq:
+        dct_word_freq[item] = 1
+    else:
+        dct_word_freq[item] += 1
+
+
+for word in sorted(dct_word_freq, key = lambda x: x.lower()):
+    print(word, dct_word_freq[word])
+
+print("==============================")
+
+for word in sorted(dct_word_freq, key = lambda x: dct_word_freq[x], reverse=True):
+    print(word, dct_word_freq[word])
+
+
+pass
+
+
+
+
+print(('aa', 'ab') < ('abc', 'a'))
+
+print(('aa', ) < ('abc', ))
+
+print(('aa', 'ab') < ('abc', 'a'))
+
+
+def fib(n):    # write Fibonacci series up to n
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+
+
+def fib3(n, plst, pflag):   # return Fibonacci series up to n
+    if pflag: plst.clear()
+
+    a, b = 0, 1
+    while a < n:
+        plst.append(a)
+        a, b = b, a+b
+    return
+
+lst_to_func = ['dummy', 'asshole']
+fib3(15, lst_to_func, False)
+
+
+
+
+
+def fib2(n):   # return Fibonacci series up to n
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return result
+
+
+Lst_rslt = fib2(15)
+
+
+fib(1000)
+
+print('')
+
+pass
+
 # zzz = (1, "ytr", 34, "Hello", 401)
 #
 # for item in zzz
@@ -39,7 +129,7 @@ import asyncio
 lst88 = ["Pear", "Apricot", "apple", "Cherry", "Apple", "Apple"]
 lst88.sort(key=lambda x: x.upper())
 
-lst88.sort(key=lambda x: x[1:4].upper())   # order by substring 
+lst88.sort(key=lambda x: x[1:4].upper())   # order by substring
 
 
 print(lst88)

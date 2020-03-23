@@ -33,11 +33,73 @@ import asyncio
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 lst77 = "?!,.:;-_@()"
-str55 = "At 11 am local time Friday, major national  and  regional radio stations broadcast the country's national anthem, allowing residents in isolation to listen and sing together from behind closed doors."
+str55 = "At 11 am local time Friday, major national  and  regional radio station major the country's national anthem, allowing residents in isolation to listen major sing together from behind closed doors."
 for x in lst77:
     str55 = str55.replace(x, " ")
 
 lst55 = str55.split()
+
+mydict = {}
+
+for x in lst55:
+    if x not in mydict:
+        mydict[x] = 1
+    else:
+        mydict[x] = mydict[x] + 1
+
+for k, v in mydict.items():
+    print(k, v)
+
+xitems = mydict.items()
+
+dctbmr = {}
+
+dctbmr['OCC'] = 2.55
+dctbmr['FLD'] = 3.75
+dctbmr['DRT'] = 1.25
+dctbmr['Z99'] = 1.75
+dctbmr['FUK'] = 1.05
+x = dctbmr['Z99']
+
+dct001 = {'OCC': 2.55, 'FLD': 3.75}
+print(dct001)
+
+cusip_rate_dct = {"ABC123": {"OCC":2.55, 'DRT' : 1.25, "TRX": 1.55 }, "DEF567": {"MBC": 5.45, "CNN":1.75}, "GHN978": {"FOX": 1.54}}
+
+dct_cusip_bmr = {}
+dct_cusip_bmr['ABC123'] = {"OCC":2.55, 'DRT' : 1.25, "TRX": 1.55}
+
+dct_bmr01 = {}
+dct_bmr01["OCC"] = 2.55
+dct_bmr01["Z99"] = 2.75
+
+dct_cusip_bmr["yut987"] = dct_bmr01
+print(dct_cusip_bmr["yut987"])
+
+
+
+print()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 with open("C:\\Users\\Mayya\\Documents\\PythonProjData\\Article01.txt", errors="replace") as f:

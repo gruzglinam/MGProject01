@@ -64,10 +64,10 @@ x = dctbmr['Z99']
 dct001 = {'OCC': 2.55, 'FLD': 3.75}
 print(dct001)
 
-cusip_rate_dct = {"ABC123": {"OCC":2.55, 'DRT' : 1.25, "TRX": 1.55 }, "DEF567": {"MBC": 5.45, "CNN":1.75}, "GHN978": {"FOX": 1.54}}
+cusip_rate_dct = {"ABC123": {"OCC": 2.55, 'DRT': 1.25, "TRX": 1.55}, "DEF567": {"MBC": 5.45, "CNN": 1.75}, "GHN978": {"FOX": 1.54}}
 
 dct_cusip_bmr = {}
-dct_cusip_bmr['ABC123'] = {"OCC":2.55, 'DRT' : 1.25, "TRX": 1.55}
+dct_cusip_bmr['ABC123'] = {"OCC": 2.55, 'DRT': 1.25, "TRX": 1.55}
 
 dct_bmr01 = {}
 dct_bmr01["OCC"] = 2.55
@@ -76,9 +76,142 @@ dct_bmr01["Z99"] = 2.75
 dct_cusip_bmr["yut987"] = dct_bmr01
 print(dct_cusip_bmr["yut987"])
 
+tpl_element1 = ("Chamber music", "Opera", "Piano")
+tpl_element2 = ("Hisoty", "Wild life")
+
+lst_element1 = ["Boston Symphony", "Tanglwood Symphony"]
+lst_element2 = ["Carmen", "Figaro", "Eugin Onegin"]
+lst_element3 = ["Clibern", "Richter", "Horowitz"]
+
+lst_element4 = ["WW2", "French revolution", "Cold War"]
+lst_element5 = ["Yellow Stone", "Africa safary"]
+lst_element6 = ["Europe", "Asia", "Africa"]
+
+st_element1 = {"WW2", "French revolution", "Cold War"}
+
+dct_inerest1 = {}
+
+# dct_inerest1[tpl_element1] = 100
+# dct_inerest1[tpl_element2] = 200
+# dct_inerest1[st_element1] = 300
+
+dic_interest = {"Music": 100, "Travel": 200, "History": 300, "Dup": 100, "Zhopa": 230, "Huy": 100, "Sharp": 121, "Flat": 100}
+
+listOfKeys = [zad for (zad, pered) in dic_interest.items() if pered == 100]
+
+listoftpl = [(zad, pered) for (zad, pered) in dic_interest.items() if (pered == 100) | (pered ==300)]
+
+
+def srch_dic_interest(p_dic_interest, p_value):
+    lstret = []
+    lst_of_items = p_dic_interest.items()
+    for item in lst_of_items:
+        if item[1] == p_value:
+          lstret.append(item)
+    return lstret
+
+
+zzz = srch_dic_interest(dic_interest, 100)
+
+
+vowels = "aeiouy"
+dct_training = {}
+lst_for_dict1 = [201, 5, 34, 43, 341, 12]
+lst_for_dict2 = [21, 73, 48, 96, 103, 38, 41]
+lst_for_dict3 = [3, 7, 2, 0, 95, 51, 12, 84, 47, 58]
+dct_training["Sailor"] = lst_for_dict1
+dct_training["Uppercse"] = lst_for_dict2
+dct_training["Tan"] = lst_for_dict3
+
+
+def fnc_cnt1 (pkey):
+    pctr = 0
+    for x in vowels:
+        pctr += pkey.count(x)
+    return pctr
+
+
+def fnc_cnt2 (pkey):
+    pctr = 0
+    for x in pkey.lower():
+        pctr += vowels.count(x)
+    return pctr
+        
+
+def fnc_cnt (pkey):
+    pctr = 0
+    for x in vowels:
+        for y in pkey:
+             if x == y:
+                 pctr = pctr + 1
+    return pctr
+
+fld_sum = 0
+
+#
+# for curr_key in dct_training.keys():
+#     if fnc_cnt2(curr_key) == 3:
+#         for x in dct_training[curr_key]:
+#             if (x % 2) == 0:
+#                 fld_sum += x
+# print(fld_sum)
+#
+#
+# for curr_key in dct_training:
+#     if fnc_cnt2(curr_key) == 3:
+#         for x in dct_training[curr_key]:
+#             if (x % 2) == 0:
+#                 fld_sum += x
+# print(fld_sum)
+#
+# 
+# for curr_tpl  in dct_training.items():
+# #   y = fnc_cnt2(curr_tpl[0])
+# #    if y == 3:
+#      if fnc_cnt2(curr_tpl[0]) == 3:
+#         for x in curr_tpl[1]:
+#             if  (x % 2) == 0:
+#                 fld_sum += x
+# print(fld_sum)
+
+
+# for number in range(1, 10):
+#    if(number % 2 != 0):
+#        print(number)
+
+
+rrr1 = fnc_cnt2("abracadabra")
+rrr1 = fnc_cnt("inerestingornot")
+rrr1 = fnc_cnt("bcdfghjklmnpqrstvqxz")
+
+
+
+for item in lst_of_wovles:
+    lst_of_tup.spl = lst_of_tup[0].split()
+    if item in st_of_tup.spl == itm in lst_of_wovles:
+        lst_of_tup.num = lst_of_tup[1].split()
+
+
+
+
+
+
+# tup_rslt = tpl_res()
+#    print(tup_rslt)
+
+
+
+
+
+
+print(dct_inerest1)
+
+
+
 
 
 print()
+
 
 
 

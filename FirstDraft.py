@@ -32,6 +32,7 @@ import asyncio
 # pass
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
+
 lst77 = "?!,.:;-_@()"
 str55 = "At 11 am local time Friday, major national  and  regional radio station major the country's national anthem, allowing residents in isolation to listen major sing together from behind closed doors."
 for x in lst77:
@@ -116,38 +117,113 @@ zzz = srch_dic_interest(dic_interest, 100)
 
 vowels = "aeiouy"
 dct_training = {}
+
 lst_for_dict1 = [201, 5, 34, 43, 341, 12]
 lst_for_dict2 = [21, 73, 48, 96, 103, 38, 41]
 lst_for_dict3 = [3, 7, 2, 0, 95, 51, 12, 84, 47, 58]
-dct_training["Sailor"] = lst_for_dict1
-dct_training["Uppercse"] = lst_for_dict2
-dct_training["Tan"] = lst_for_dict3
+lst_for_dict4 = ["Mayya", 123, "Yura", 456.54, "Alex", 789, "Katya", 987]
+
+# dct_training["Sailor"] = lst_for_dict1
+# dct_training["Uppercse"] = lst_for_dict2
+# dct_training["Tan"] = lst_for_dict3
+
+dct_training["Sailor"] = [23, "Peter", "Victor", 34.876, 567, "Haha", "Yuriy", 890]
+dct_training["Uppercse"] = ["abc", 123, "def", 456, ("TupTvouMat", 1243, "Tired"),"ghi", 789]
+dct_training["Tan"] = ["Chip", 678, "And", ["iuyiuy", 987987, "yyyyry"], 9879, "Dale", 567567]
+dct_training["Mfamily"] = lst_for_dict4
+
+x1 = 453
+x2 = "hello"
+x3 = 24.90
+
+tx1 = type(x1)
+
+if type(x1) == int:
+    print("x1 is int")
+
+if type(x2) == str:
+    print("x2 is str")
+
+if type(x3) == float:
+    print("x2 is float")
+
+tx2 = type(x2)
+tx3 = type(x3)
 
 
-def fnc_cnt1 (pkey):
+
+def fnc_cntvowels(pkey):
     pctr = 0
-    for x in vowels:
-        pctr += pkey.count(x)
-    return pctr
+    for alp_let in vowels:
+        pctr += pkey.lower().count(alp_let)
+    return  pctr
 
 
-def fnc_cnt2 (pkey):
-    pctr = 0
-    for x in pkey.lower():
-        pctr += vowels.count(x)
-    return pctr
-        
+dic_new = {}
 
-def fnc_cnt (pkey):
-    pctr = 0
-    for x in vowels:
-        for y in pkey:
-             if x == y:
-                 pctr = pctr + 1
-    return pctr
+for curr_ky in dct_training.keys():
+    if fnc_cntvowels(curr_ky) == 3 or len(curr_ky) < 4:
+        for x in dct_training[curr_ky]:
+            if type(x) == int or type(x) == float:
+                if curr_ky + "_num" not in dic_new:
+                    dic_new[curr_ky + "_num"] = [x]
+                else:
+                    dic_new[curr_ky + "_num"].append(x)
+            elif type(x) == str:
+                if curr_ky + "_alp" not in dic_new:
+                    dic_new[curr_ky + "_alp" ]  = [x]
+                else:
+                    dic_new[curr_ky + "_alp" ].append(x)
 
-fld_sum = 0
 
+print(dic_new)
+
+
+
+
+dic_new = {}
+
+for curr_ky in dct_training.keys():
+    if fnc_cntvowels(curr_ky) == 3 or len(curr_ky) < 4:
+        for x in dct_training[curr_ky]:
+            if (x % 2) > 0:
+                if curr_ky not in dic_new:
+                    dic_new[curr_ky] = [x]
+                else:
+                    dic_new[curr_ky].append(x)
+
+print(dic_new)
+
+
+
+
+
+
+
+# def fnc_cnt1 (pkey):
+#     pctr = 0
+#     for x in vowels:
+#         pctr += pkey.count(x)
+#     return pctr
+#
+#
+# def fnc_cnt2 (pkey):
+#     pctr = 0
+#     for x in pkey.lower():
+#         pctr += vowels.count(x)
+#     return pctr
+#
+#
+# def fnc_cnt (pkey):
+#     pctr = 0
+#     for x in vowels:
+#         for y in pkey:
+#              if x == y:
+#                  pctr = pctr + 1
+#     return pctr
+#
+# fld_sum = 0
+#
 #
 # for curr_key in dct_training.keys():
 #     if fnc_cnt2(curr_key) == 3:
@@ -164,7 +240,7 @@ fld_sum = 0
 #                 fld_sum += x
 # print(fld_sum)
 #
-# 
+#
 # for curr_tpl  in dct_training.items():
 # #   y = fnc_cnt2(curr_tpl[0])
 # #    if y == 3:
@@ -206,23 +282,7 @@ for item in lst_of_wovles:
 
 print(dct_inerest1)
 
-
-
-
-
 print()
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,6 +33,71 @@ import asyncio
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 
+dic_orig = {"str01": ["Trivia", 123, 321, 2.34, 4.32], "str02": [345, 543, "Connie", 3,45, 5.43],"str03": [4.56, 5,67, 6,78, "Iseland", 7.89], "str04": ["Sonya", 678, "Oleg", "Natalie"]}
+dic_new = {}
+
+zxc = list(dic_orig.keys())
+print(zxc[2])
+
+for curr_ky in dic_orig.keys():
+    dic_new[curr_ky] = {"int": 0, "float": 0, "str": 0}
+    for y in dic_orig[curr_ky]:
+
+        if type(y) ==  int:
+            dic_new[curr_ky]["int"] += 1
+        elif type(y) == str:
+            dic_new[curr_ky]["str"] += 1
+        elif type(y) == float:
+             dic_new[curr_ky]["float"] += 1
+
+print(dic_new)
+
+
+
+
+
+
+lst_to_dic =["abc",  123,  321,  234, \
+             "cba",  432,  345,  543, \
+             "abc",  456,  654,  567, \
+             "dcb",  789,  987,  890, \
+             "cde",  901,  109,  111, \
+             "edc",  222,  333,  444, \
+             "def",  555,  666,  777, \
+             "abc",  888,  999,  122, \
+             "cde",  233,  344,  455, \
+             "cde",  566,  677,  788]
+
+dic_from_lst = {}
+dic_dup_ctr = {}
+
+ttt = list(range(0, len(lst_to_dic), 4))
+yyyy = lst_to_dic.index("dcb")
+
+for i in range(0, len(lst_to_dic), 4):
+    if lst_to_dic[i] not in dic_from_lst:
+        dic_from_lst[lst_to_dic[i]] = [lst_to_dic[i + 1], lst_to_dic[i + 2], lst_to_dic[i + 3]]
+    else:
+        curr_ky = lst_to_dic[i]
+        dic_from_lst[curr_ky].extend([lst_to_dic[i + 1], lst_to_dic[i + 2], lst_to_dic[i + 3]])
+        if curr_ky[i] not in dic_dup_ctr:
+            dic_dup_ctr[curr_ky] = 2
+        else:
+            dic_dup_ctr[curr_ky] += 1
+
+print(dic_from_lst)
+print(dic_dup_ctr)
+
+
+
+
+
+
+
+
+
+
+
 lst77 = "?!,.:;-_@()"
 str55 = "At 11 am local time Friday, major national  and  regional radio station major the country's national anthem, allowing residents in isolation to listen major sing together from behind closed doors."
 for x in lst77:

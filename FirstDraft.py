@@ -33,6 +33,76 @@ import asyncio
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 
+
+# project: get familiar with CLASS 03/26/2020
+
+class Car:
+    make = ''
+    model = ''
+    year = 0
+    color = ''
+
+car1 = Car()
+car1.make = 'Nissan'
+car1.model = "Sentra"
+car1.year = 2018
+car1.color = "white"
+
+
+car2 = Car()
+car2.make = "Honda"
+car2.model = "Civic"
+car2.year = 2018
+car2.color = "Blue"
+
+
+print(hash(car1))
+print(hash(car2))
+
+lst_cars = []
+
+lst_cars.append(Car())
+lst_cars.append(Car())
+lst_cars.append(Car())
+
+lst_cars[1].make = "Toyota"
+lst_cars[1].model = "Camry"
+lst_cars[1].year = 2015
+lst_cars[1].color = "Black"
+
+
+
+
+
+
+
+# Project: Dictionary: Key = [list with data types: int, str, float, tuples.] Create new dictionary with the same key, and list [int: ctr of int, str: ctr of str, float: ctr of float 03/26/2020
+dic_orig_t = {"lst01": ["Trivia", 123, 321, 2.34, (4, 32)], "lst02": [345, 543, ("Connie", 3.45), 5.43],"lst03": [4.56, 5,67, 6,78, "Iseland", 7.89], "lst04": ["Sonya", (678, "Oleg"), "Natalie"]}
+dic_new_t = {}
+
+
+for curr_key in dic_orig_t.keys():
+    dic_new_t[curr_key] = {"int": 0, "float": 0, "str": 0}
+    for lst_elm in dic_orig_t[curr_key]:
+        if type(lst_elm) == int:
+            dic_new_t[curr_key]["int"] += 1
+        elif type(lst_elm) == str:
+            dic_new_t[curr_key]["str"] += 1
+        elif type(lst_elm) == float:
+            dic_new_t[curr_key]["float"] += 1
+        elif type(lst_elm) == tuple:
+            for inx in list(lst_elm):
+                if type(inx) == int:
+                    dic_new_t[curr_key]["int"] += 1
+                elif type(inx) == str:
+                    dic_new_t[curr_key]["str"] += 1
+                elif  type(inx) == float:
+                    dic_new_t[curr_key]["float"] += 1
+
+
+
+# Project: Dictionary: Key = [list with data types: int, str, float.] Create new dictionary with the same key, and list [int: ctr of int, str: ctr of str, float: ctr of float
+
 dic_orig = {"str01": ["Trivia", 123, 321, 2.34, 4.32], "str02": [345, 543, "Connie", 3,45, 5.43],"str03": [4.56, 5,67, 6,78, "Iseland", 7.89], "str04": ["Sonya", 678, "Oleg", "Natalie"]}
 dic_new = {}
 

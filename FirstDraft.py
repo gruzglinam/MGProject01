@@ -1,5 +1,31 @@
 import math
+import MyFunctions
 import asyncio
+
+
+"""
+from tkinter import *
+
+window = Tk()
+
+window.title("Welcome to LikeGeeks app")
+
+lbl1 = Label(window, text="Hello")
+lbl1.grid(column=0, row=0)
+
+lbl2 = Label(window, text="Here you go", font=("Arial Bold", 50))
+lbl2.grid(column=0, row=30)
+
+window.mainloop()
+
+xxxxx = 0
+"""
+
+# xx1 = 5
+# exval = "(xx1 + 2) * 3 + xx1*xx1*xx1"
+#
+# calc = eval(exval)
+
 
 # async def main():
 #     print('hello')
@@ -33,14 +59,218 @@ import asyncio
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 
+# Learning Files input and output April 01
+
+x = MyFunctions.fnc_fnd_max([11, 22, 33, 44])
+
+
+
+
+# 03.31.2020 learning Input @ Output
+
+flt01 = 3627365845.329
+
+print("To {1:#^28,.4f} be {0:10} ot not {0:30} to be? This is the question".format(451, flt01 ))
+
+
+qs = "quoted \t\tstring"
+print( f'{qs}' )
+
+print( f'{"quoted string"}' )
+
+
+
+lit_name = 'Mayya'
+lit_age = 60
+
+format_lt = f'I know {lit_name}\'s age is {lit_age}'
+print(format_lt)
+
+
+
+yes_votes = 42_572_654
+no_votes = 43_132_495
+percentage = yes_votes / (yes_votes + no_votes)
+teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percentage + 2.3)
+print(teststr)
+
+
+a = [0, 1, 2]
+for element in a:
+    if not element:
+        pass
+    print(element)
+
+for element in a:
+    if not element:
+        continue
+    print(element)
+
+# change this code
+number = 16
+second_number = 0
+first_array = [1, 2, 3]
+second_array = [1, 2]
+
+if number > 15:
+    print("1")
+
+if first_array:
+    print("2")
+
+if len(second_array) == 2:
+    print("3")
+
+if len(first_array) + len(second_array) == 5:
+    print("4")
+
+if first_array and first_array[0] == 1:
+    print("5")
+
+if not second_number:
+    print("6")
+
+
+
+string01 = " Today I am learning  text formatting"
+
+print("Length of string01 = %d" % len(string01))
+print("The first occurrence of the letter I = %d" % string01.index("I"))
+print("The total num of letter t used in string = %d" % string01.lower().count("t"))
+
+# boolean variables to evaluate conditions.
+x = 2
+print("testing boolean if x = 2 :",  (x == 2))
+print(x == 3)
+print(x < 3)
+
+name = "Mayya"
+if name in ["Mayya", "Rick"]:
+    print("Your name is either Mayya or Rick.")
+
+
+
+class Pair():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.name = "Great"
+
+    def __repr__(self):
+        return 'Pair({0.x!r}, {0.y!r}, {0.name!r})'.format(self)
+
+    def __str__(self):
+        return 'instance Pair({0.x!s}, {0.y!s})'.format(self)
+
+pair1 = Pair(7, 12)
+vrepr = pair1.__repr__()
+vstr  = pair1.__str__()
+
+print(pair1)
+print(vrepr)
+print(vstr)
+
+
+
+
+
+print(dir())
+
+
+class Day():
+    def __init__(self, pvisit, pcontact):
+        self.visit = pvisit
+        self.contact = pcontact
+
+    def __add__(self, pday):
+         return Day(self.visit + pday.visit, self.contact + pday.contact)
+
+
+d1 = Day(5, 7)
+d2 = Day(3, 9)
+d3 = Day(5, 2)
+d4 = d1 + d2
+d5 = d1 + d2 + d3
+
+# var1 = 35 + 3*(43 - 15)
+
+# interview question - find the largest number in the list
+
+
+lst_interview = [11, 22, -33, 44, 55, 66, 77, 88, 99]
+
+# var_sum = sum(lst_interview, 7)
+varx = lst_interview[-1]
+varx = lst_interview[-6:-1]
+var_sum = sum(lst_interview[-6:-2])
+
+
+
+
+
+
+
+# lst_interview = [11]
+
+
+# def fnc_fnd_max(plist):
+#     max = plist[0]
+#
+#     for inx in range(1, len(lst_interview)):
+#         if plist[inx] > max:
+#             max = plist[inx]
+#     return max
+
+
+max_back = fnc_fnd_max(lst_interview)
+print("max_back :", max_back)
+
 
 # project: get familiar with CLASS 03/26/2020
 
 class Car:
-    make = ''
-    model = ''
-    year = 0
-    color = ''
+
+    def __init__(self, pmake, pmodel, pyear, pcolor):
+        self.make = pmake
+        self.model = pmodel
+        self.year = pyear
+        self.color = pcolor
+
+    def __eq__(self, p_other_car):
+        if self.make == p_other_car.make and self.model == p_other_car.model and self.year == p_other_car.year:
+            return True
+        else:
+            return False
+
+    def all_info(self):
+        return self.make + ' ' + self.model + ' ' + str(self.year) + ' ' + self.color
+
+
+car101 = Car("Honda", "Accord", 1995, "orange")
+car102 = Car("Honda", "Civic", 2010, "white")
+car103 = Car("Honda", "Accord", 1995, "black")
+car104 = Car("Nissan", "Civic", 2010, "grey")
+
+if car101 == car102:
+    print(car101.all_info(), " == ", car102.all_info())
+else:
+    print(car101.all_info(), " != ", car102.all_info())
+
+if car101 == car103:
+    print(car101.all_info(), " == ", car103.all_info())
+else:
+    print(car101.all_info(), " != ", car103.all_info())
+
+car09 = Car('Ford', 'Fusion', 2014, 'red')
+
+# car08 = Car('GM', 'Malibu')
+
+print(car09.all_info())
+# print(car08.All_info())
+
+# car08.year = 2017
+# car08.color = 'yellow'
+
 
 car1 = Car()
 car1.make = 'Nissan'
@@ -48,13 +278,11 @@ car1.model = "Sentra"
 car1.year = 2018
 car1.color = "white"
 
-
 car2 = Car()
 car2.make = "Honda"
 car2.model = "Civic"
 car2.year = 2018
 car2.color = "Blue"
-
 
 print(hash(car1))
 print(hash(car2))
@@ -70,16 +298,10 @@ lst_cars[1].model = "Camry"
 lst_cars[1].year = 2015
 lst_cars[1].color = "Black"
 
-
-
-
-
-
-
 # Project: Dictionary: Key = [list with data types: int, str, float, tuples.] Create new dictionary with the same key, and list [int: ctr of int, str: ctr of str, float: ctr of float 03/26/2020
-dic_orig_t = {"lst01": ["Trivia", 123, 321, 2.34, (4, 32)], "lst02": [345, 543, ("Connie", 3.45), 5.43],"lst03": [4.56, 5,67, 6,78, "Iseland", 7.89], "lst04": ["Sonya", (678, "Oleg"), "Natalie"]}
+dic_orig_t = {"lst01": ["Trivia", 123, 321, 2.34, (4, 32)], "lst02": [345, 543, ("Connie", 3.45), 5.43],
+              "lst03": [4.56, 5, 67, 6, 78, "Iseland", 7.89], "lst04": ["Sonya", (678, "Oleg"), "Natalie"]}
 dic_new_t = {}
-
 
 for curr_key in dic_orig_t.keys():
     dic_new_t[curr_key] = {"int": 0, "float": 0, "str": 0}
@@ -96,14 +318,13 @@ for curr_key in dic_orig_t.keys():
                     dic_new_t[curr_key]["int"] += 1
                 elif type(inx) == str:
                     dic_new_t[curr_key]["str"] += 1
-                elif  type(inx) == float:
+                elif type(inx) == float:
                     dic_new_t[curr_key]["float"] += 1
-
-
 
 # Project: Dictionary: Key = [list with data types: int, str, float.] Create new dictionary with the same key, and list [int: ctr of int, str: ctr of str, float: ctr of float
 
-dic_orig = {"str01": ["Trivia", 123, 321, 2.34, 4.32], "str02": [345, 543, "Connie", 3,45, 5.43],"str03": [4.56, 5,67, 6,78, "Iseland", 7.89], "str04": ["Sonya", 678, "Oleg", "Natalie"]}
+dic_orig = {"str01": ["Trivia", 123, 321, 2.34, 4.32], "str02": [345, 543, "Connie", 3, 45, 5.43],
+            "str03": [4.56, 5, 67, 6, 78, "Iseland", 7.89], "str04": ["Sonya", 678, "Oleg", "Natalie"]}
 dic_new = {}
 
 zxc = list(dic_orig.keys())
@@ -113,30 +334,25 @@ for curr_ky in dic_orig.keys():
     dic_new[curr_ky] = {"int": 0, "float": 0, "str": 0}
     for y in dic_orig[curr_ky]:
 
-        if type(y) ==  int:
+        if type(y) == int:
             dic_new[curr_ky]["int"] += 1
         elif type(y) == str:
             dic_new[curr_ky]["str"] += 1
         elif type(y) == float:
-             dic_new[curr_ky]["float"] += 1
+            dic_new[curr_ky]["float"] += 1
 
 print(dic_new)
 
-
-
-
-
-
-lst_to_dic =["abc",  123,  321,  234, \
-             "cba",  432,  345,  543, \
-             "abc",  456,  654,  567, \
-             "dcb",  789,  987,  890, \
-             "cde",  901,  109,  111, \
-             "edc",  222,  333,  444, \
-             "def",  555,  666,  777, \
-             "abc",  888,  999,  122, \
-             "cde",  233,  344,  455, \
-             "cde",  566,  677,  788]
+lst_to_dic = ["abc", 123, 321, 234, \
+              "cba", 432, 345, 543, \
+              "abc", 456, 654, 567, \
+              "dcb", 789, 987, 890, \
+              "cde", 901, 109, 111, \
+              "edc", 222, 333, 444, \
+              "def", 555, 666, 777, \
+              "abc", 888, 999, 122, \
+              "cde", 233, 344, 455, \
+              "cde", 566, 677, 788]
 
 dic_from_lst = {}
 dic_dup_ctr = {}
@@ -157,16 +373,6 @@ for i in range(0, len(lst_to_dic), 4):
 
 print(dic_from_lst)
 print(dic_dup_ctr)
-
-
-
-
-
-
-
-
-
-
 
 lst77 = "?!,.:;-_@()"
 str55 = "At 11 am local time Friday, major national  and  regional radio station major the country's national anthem, allowing residents in isolation to listen major sing together from behind closed doors."
@@ -200,7 +406,8 @@ x = dctbmr['Z99']
 dct001 = {'OCC': 2.55, 'FLD': 3.75}
 print(dct001)
 
-cusip_rate_dct = {"ABC123": {"OCC": 2.55, 'DRT': 1.25, "TRX": 1.55}, "DEF567": {"MBC": 5.45, "CNN": 1.75}, "GHN978": {"FOX": 1.54}}
+cusip_rate_dct = {"ABC123": {"OCC": 2.55, 'DRT': 1.25, "TRX": 1.55}, "DEF567": {"MBC": 5.45, "CNN": 1.75},
+                  "GHN978": {"FOX": 1.54}}
 
 dct_cusip_bmr = {}
 dct_cusip_bmr['ABC123'] = {"OCC": 2.55, 'DRT': 1.25, "TRX": 1.55}
@@ -231,11 +438,12 @@ dct_inerest1 = {}
 # dct_inerest1[tpl_element2] = 200
 # dct_inerest1[st_element1] = 300
 
-dic_interest = {"Music": 100, "Travel": 200, "History": 300, "Dup": 100, "Zhopa": 230, "Huy": 100, "Sharp": 121, "Flat": 100}
+dic_interest = {"Music": 100, "Travel": 200, "History": 300, "Dup": 100, "Zhopa": 230, "Huy": 100, "Sharp": 121,
+                "Flat": 100}
 
 listOfKeys = [zad for (zad, pered) in dic_interest.items() if pered == 100]
 
-listoftpl = [(zad, pered) for (zad, pered) in dic_interest.items() if (pered == 100) | (pered ==300)]
+listoftpl = [(zad, pered) for (zad, pered) in dic_interest.items() if (pered == 100) | (pered == 300)]
 
 
 def srch_dic_interest(p_dic_interest, p_value):
@@ -243,12 +451,11 @@ def srch_dic_interest(p_dic_interest, p_value):
     lst_of_items = p_dic_interest.items()
     for item in lst_of_items:
         if item[1] == p_value:
-          lstret.append(item)
+            lstret.append(item)
     return lstret
 
 
 zzz = srch_dic_interest(dic_interest, 100)
-
 
 vowels = "aeiouy"
 dct_training = {}
@@ -263,7 +470,7 @@ lst_for_dict4 = ["Mayya", 123, "Yura", 456.54, "Alex", 789, "Katya", 987]
 # dct_training["Tan"] = lst_for_dict3
 
 dct_training["Sailor"] = [23, "Peter", "Victor", 34.876, 567, "Haha", "Yuriy", 890]
-dct_training["Uppercse"] = ["abc", 123, "def", 456, ("TupTvouMat", 1243, "Tired"),"ghi", 789]
+dct_training["Uppercse"] = ["abc", 123, "def", 456, ("TupTvouMat", 1243, "Tired"), "ghi", 789]
 dct_training["Tan"] = ["Chip", 678, "And", ["iuyiuy", 987987, "yyyyry"], 9879, "Dale", 567567]
 dct_training["Mfamily"] = lst_for_dict4
 
@@ -286,12 +493,11 @@ tx2 = type(x2)
 tx3 = type(x3)
 
 
-
 def fnc_cntvowels(pkey):
     pctr = 0
     for alp_let in vowels:
         pctr += pkey.lower().count(alp_let)
-    return  pctr
+    return pctr
 
 
 dic_new = {}
@@ -306,15 +512,11 @@ for curr_ky in dct_training.keys():
                     dic_new[curr_ky + "_num"].append(x)
             elif type(x) == str:
                 if curr_ky + "_alp" not in dic_new:
-                    dic_new[curr_ky + "_alp" ]  = [x]
+                    dic_new[curr_ky + "_alp"] = [x]
                 else:
-                    dic_new[curr_ky + "_alp" ].append(x)
-
+                    dic_new[curr_ky + "_alp"].append(x)
 
 print(dic_new)
-
-
-
 
 dic_new = {}
 
@@ -328,12 +530,6 @@ for curr_ky in dct_training.keys():
                     dic_new[curr_ky].append(x)
 
 print(dic_new)
-
-
-
-
-
-
 
 # def fnc_cnt1 (pkey):
 #     pctr = 0
@@ -395,40 +591,18 @@ rrr1 = fnc_cnt2("abracadabra")
 rrr1 = fnc_cnt("inerestingornot")
 rrr1 = fnc_cnt("bcdfghjklmnpqrstvqxz")
 
-
-
 for item in lst_of_wovles:
     lst_of_tup.spl = lst_of_tup[0].split()
     if item in st_of_tup.spl == itm in lst_of_wovles:
         lst_of_tup.num = lst_of_tup[1].split()
 
-
-
-
-
-
 # tup_rslt = tpl_res()
 #    print(tup_rslt)
-
-
-
-
 
 
 print(dct_inerest1)
 
 print()
-
-
-
-
-
-
-
-
-
-
-
 
 with open("C:\\Users\\Mayya\\Documents\\PythonProjData\\Article01.txt", errors="replace") as f:
     str55 = f.read()
@@ -448,62 +622,54 @@ for item in lst55:
     else:
         dct_word_freq[item] += 1
 
-
-for word in sorted(dct_word_freq, key = lambda x: x.lower()):
+for word in sorted(dct_word_freq, key=lambda x: x.lower()):
     print(word, dct_word_freq[word])
 
 print("==============================")
 
-for word in sorted(dct_word_freq, key = lambda x: dct_word_freq[x], reverse=True):
+for word in sorted(dct_word_freq, key=lambda x: dct_word_freq[x], reverse=True):
     print(word, dct_word_freq[word])
-
 
 pass
 
-
-
-
 print(('aa', 'ab') < ('abc', 'a'))
 
-print(('aa', ) < ('abc', ))
+print(('aa',) < ('abc',))
 
 print(('aa', 'ab') < ('abc', 'a'))
 
 
-def fib(n):    # write Fibonacci series up to n
+def fib(n):  # write Fibonacci series up to n
     a, b = 0, 1
     while a < n:
         print(a, end=' ')
-        a, b = b, a+b
+        a, b = b, a + b
 
 
-def fib3(n, plst, pflag):   # return Fibonacci series up to n
+def fib3(n, plst, pflag):  # return Fibonacci series up to n
     if pflag: plst.clear()
 
     a, b = 0, 1
     while a < n:
         plst.append(a)
-        a, b = b, a+b
+        a, b = b, a + b
     return
+
 
 lst_to_func = ['dummy', 'asshole']
 fib3(15, lst_to_func, False)
 
 
-
-
-
-def fib2(n):   # return Fibonacci series up to n
+def fib2(n):  # return Fibonacci series up to n
     result = []
     a, b = 0, 1
     while a < n:
         result.append(a)
-        a, b = b, a+b
+        a, b = b, a + b
     return result
 
 
 Lst_rslt = fib2(15)
-
 
 fib(1000)
 
@@ -519,8 +685,7 @@ pass
 lst88 = ["Pear", "Apricot", "apple", "Cherry", "Apple", "Apple"]
 lst88.sort(key=lambda x: x.upper())
 
-lst88.sort(key=lambda x: x[1:4].upper())   # order by substring
-
+lst88.sort(key=lambda x: x[1:4].upper())  # order by substring
 
 print(lst88)
 print('test point 1')
@@ -537,13 +702,8 @@ print('test point 3')
 for i, v in enumerate(lst99):
     print(i, v)
 
-
 for i in sorted(set(lst88)):
-     print(i)
-
-
-
-
+    print(i)
 
 # for item in set99:
 #    print(item)
@@ -576,9 +736,8 @@ for i in sorted(set(lst88)):
 
 # sets
 
-testing_sets = {"Apple",  "Orange",  "Apricot",  "Plum"}
+testing_sets = {"Apple", "Orange", "Apricot", "Plum"}
 print(testing_sets)
-
 
 a = set("abcda")
 b = set("efghie")
@@ -588,14 +747,12 @@ print(a - b)
 print(b - a)
 print(a & b)
 
-
 # create a list of two tuples
-lst_2tups = [(x,  x * 2) for x in range(10)]
+lst_2tups = [(x, x * 2) for x in range(10)]
 print(lst_2tups)
 
-
 # dictionary - curly brackets, pair keys, separated by coma
-tel = {"Jack": 4098,  "Sape": 4139}
+tel = {"Jack": 4098, "Sape": 4139}
 print(tel)
 tel["Mayya"] = 205
 print(tel)
@@ -609,35 +766,32 @@ print(Bln)
 print(Bln1)
 dctr01 = dict(Yura=426, Mayya=502, Alex=1026, Katya=307)
 print(dctr01)
-dct92 = {x: x**2 for x in (2, 4, 6, 8)}
+dct92 = {x: x ** 2 for x in (2, 4, 6, 8)}
 
 for k, v in dctr01.items():
     print(k, v)
 for i in reversed(range(1, 10, 2)):
     print(i)
 
-
-lst01 = ["Mayya", "Yura", "Sasha", "abra", "cadabra", "donkey", "bat", "apple", "Katya", "Phuog-Anh", "Olga", "mini-Me", "donkey", "abra", "apple", "apple"]
+lst01 = ["Mayya", "Yura", "Sasha", "abra", "cadabra", "donkey", "bat", "apple", "Katya", "Phuog-Anh", "Olga", "mini-Me",
+         "donkey", "abra", "apple", "apple"]
 for i, v in enumerate(lst01):
     print(i, v)
 
-
-lst01.sort(key=lambda x: x.upper(),  reverse=True)
-
+lst01.sort(key=lambda x: x.upper(), reverse=True)
 
 # reversed
 var_iter = iter(lst01)
 
 while True:
     try:
-        print (next(var_iter))
+        print(next(var_iter))
     except StopIteration:
-         break
-
+        break
 
 
 def func_rev(plst01):
-# return list(reversed(plst01))
+    # return list(reversed(plst01))
     return sorted(set(plst01))
 
 
@@ -653,9 +807,8 @@ def func_rev(plst01):
 rev_out = func_rev(lst01)
 print(rev_out)
 
-
-questions = ["Name",  "Interest",  "Colour"]
-answers = ["Mayya",  "Music",  "Purple"]
+questions = ["Name", "Interest", "Colour"]
+answers = ["Mayya", "Music", "Purple"]
 for q, a in zip(questions, answers):
     print('What is your {0}?  It is {1}.'.format(q, a))
 
@@ -734,23 +887,15 @@ tplexample = ("Rose", "Tulip", 123, 987, "Go f__* ")
 tpl99 = 12, 45, "ooo"
 
 tup1 = ('physics', 'chemistry', 1997, 2000)
-tup2 = (1, 2, 3, 4, 5, 6, 7 )
+tup2 = (1, 2, 3, 4, 5, 6, 7)
 print("tup1[0]: ", tup1[0])
 print("tup2[1:5]: ", tup2[1:5])
 
 tup = ('physics', 'chemistry', 1997, 2000)
-print (tup)
+print(tup)
 del tup
 print("After deleting tup : ")
 print(tup)
-
-
-
-
-
-
-
-
 
 var1 = lst02.index("Daughter")
 var2 = len(lst02)

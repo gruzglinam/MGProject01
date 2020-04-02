@@ -59,6 +59,57 @@ xxxxx = 0
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 
+# Learning Files Input abd Output April 2
+
+def fnc_skiplines(f, n):
+    for i in range(n):
+        next(f)
+    return
+
+eeev1 = '45*3 - (12+34)/2'
+eeev2 = eval('45*3 - (12+34)/2')
+
+lst2001 = '[45, "hello", 56, 78.56, "mayya", [109, 56, "vesna", 67, 8], 890]'
+lst2002 = eval(lst2001)
+
+MyFile = open("Myfile1.txt", "a+")
+# for inx in range(10):
+#    MyFile.write("%s\n" % (['a', 'b', 'c', (inx+1)]))
+
+MyFile.seek(0, 0)
+
+sum = 0
+
+fnc_skiplines(MyFile, 11)
+
+for line in MyFile:
+   xval = line
+   lstvar1 = eval(line)
+   lstvar2 = line.strip('[').strip(']').split(", ")
+
+
+
+
+
+
+
+
+
+
+# f = open("migfile.txt", "a+")
+#
+# for i in range(10):
+#     f.write("This is a new line %d\n" % (i+1))
+#
+# f.seek(0, 0)
+#
+# # f01 = open("migfile.txt", "r")
+#
+# for line in f:
+#     print(line, lineend=' ')
+
+MyFile.close()
+
 # Learning Files input and output April 01
 
 x = MyFunctions.fnc_fnd_max([11, 22, 33, 44])

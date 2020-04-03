@@ -1,0 +1,10 @@
+List manipulation
+
+ - delete, pop, remove, clear, list comprehension:
+https://note.nkmk.me/en/python-list-clear-pop-remove-del/
+
+
+
+File manipulation:
+
+https://www.geeksforgeeks.org/file-objects-python/

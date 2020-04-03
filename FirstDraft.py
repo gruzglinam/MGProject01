@@ -1,4 +1,5 @@
 import math
+import re
 import MyFunctions
 import asyncio
 
@@ -66,6 +67,32 @@ def fnc_skiplines(f, n):
         next(f)
     return
 
+
+lstsss = ['Alice', 'Mayya', 'Vera', 'Aaron', 'Maple', 'Linden', 'Oak', 'Mum', 'Tenor', ' Reason', 'Aaron', 'Memphis', 'Aaron']
+lstsss.remove('Aaron')
+
+file_sample = open("SampleFile.txt", "r+", encoding='utf8', errors='ignore')
+text = file_sample.read()
+lst_txt = text.split('\n')
+
+for i in range(0, len(lst_txt)):
+    if re.match(r'^\s*$', lst_txt[i]):
+        lst_txt[i] = ''
+
+while True:
+    try:
+        lst_txt.remove('')
+    except ValueError:
+        break
+
+file_sample.seek(0, 0)
+for item in lst_txt:
+    file_sample.write(item + '\n')
+
+
+file_sample.close()
+
+
 eeev1 = '45*3 - (12+34)/2'
 eeev2 = eval('45*3 - (12+34)/2')
 
@@ -85,7 +112,13 @@ fnc_skiplines(MyFile, 11)
 for line in MyFile:
    xval = line
    lstvar1 = eval(line)
-   lstvar2 = line.strip('[').strip(']').split(", ")
+#  lstvar2 = line.strip('[').strip(']').split(", ")
+#   sum += lstvar1[3]
+   for curr_elm in lstvar1:
+       if type(curr_elm) == int:
+           sum += curr_elm
+
+print("Total: %s " % (sum))
 
 
 

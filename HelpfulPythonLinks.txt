@@ -7,4 +7,13 @@ https://note.nkmk.me/en/python-list-clear-pop-remove-del/
 
 File manipulation:
 
+- good explanation of file opening modes and operations
 https://www.geeksforgeeks.org/file-objects-python/
+
+
+Working with binary data
+https://www.devdungeon.com/content/working-binary-data-python#bytes
+
+
+Working with email
+https://realpython.com/python-send-email/

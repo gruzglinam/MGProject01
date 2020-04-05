@@ -67,71 +67,57 @@ xxxxx = 0
 
 #   Learning how to deal with email  2020-04-03
 
-to_email   = 'yo@domain.com'
-gmail_user = 'i.s33@gmail.com'
-gmail_pwd  = 'kwa-kwa'
-
-smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
-smtpserver.ehlo()
-smtpserver.starttls()
-smtpserver.ehlo()    # extra characters to permit edit
-smtpserver.login(gmail_user, gmail_pwd)
-
-header = 'To:' + to_email+ '\n' + 'From: ' + gmail_user + '\n' + 'Subject: One more testing how to send emails in Python\n'
-print(header)
-
-msg = header + '\n Mayya,\n\nThis is email #0004,\nit was sent by your husband Yuriy\nfrom your father\'s second email account'
-smtpserver.sendmail(gmail_user, to_email, msg)
-smtpserver.quit()
-
-print('done!')
-
-
-
-
-
-#port = 465  # For SSL
-port = 587  # for TTL
-
-smtp_server   = "smtp.gmail.com"       # sender's server
-
-sender_email  = "i.s33@gmail.com"
-password = input("Type your password and press enter: ")
-receiver_email = "@kkk.com"       # receiver email address
-
-# Create a secure SSL context
-context = ssl.create_default_context()
-
-with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-    server.connect()
-    server.login("i.s33@gmail.com", password)
-#    server.ehlo()  # Can be omitted
-#    server.starttls(context=context)
-#    server.ehlo()  # Can be omitted
-server.login("i.s33@gmail.com", password)
-
-message = """\
-Subject: Hi there
-
-This message is sent from Python by your husband
-
-Yuriy.
-"""
-server.sendmail(sender_email, receiver_email, message)
-
-
-# smtp.connect('YOUR.MAIL.SERVER', 587)
-# smtp.ehlo()
-# smtp.starttls()
-# smtp.ehlo()
-# smtp.login('USERNAME@DOMAIN', 'PASSWORD')
-
-
-
-
-
-
-
+# to_email   = 'mayya.gruzglina@outlook.com'
+# gmail_user = 'igor.sklyarskiy33@gmail.com'
+# gmail_pwd  = 'Arizona33!'
+#
+# smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
+# smtpserver.ehlo()
+# smtpserver.starttls()
+# smtpserver.ehlo()    # extra characters to permit edit
+# smtpserver.login(gmail_user, gmail_pwd)
+#
+# header = 'To:' + to_email+ '\n' + 'From: ' + gmail_user + '\n' + 'Subject: Sending our 5th email testing how to send emails in Python\n'
+# print(header)
+#
+# msg = header + '\n Mayya,\n\nThis is email #0004,\nit was sent by your husband Yuriy\nfrom your father\'s second email account'
+# smtpserver.sendmail(gmail_user, to_email, msg)
+# smtpserver.quit()
+#
+# print('done!')
+#
+#
+#
+#
+#
+# #port = 465  # For SSL
+# port = 587  # for TTL
+#
+# smtp_server   = "smtp.gmail.com"       # sender's server
+#
+# sender_email  = "i.s33@gmail.com"
+# password = input("Type your password and press enter: ")
+# receiver_email = "@kkk.com"       # receiver email address
+#
+# # Create a secure SSL context
+# context = ssl.create_default_context()
+#
+# with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+#     server.connect()
+#     server.login("i.s33@gmail.com", password)
+# #    server.ehlo()  # Can be omitted
+# #    server.starttls(context=context)
+# #    server.ehlo()  # Can be omitted
+# server.login("i.s33@gmail.com", password)
+#
+# message = """\
+# Subject: Hi there
+#
+# This message is sent from Python by your husband
+#
+# Yuriy.
+# """
+# server.sendmail(sender_email, receiver_email, message)
 
 
 # Learning Files Input abd Output April 2
@@ -140,6 +126,17 @@ def fnc_skiplines(f, n):
     for i in range(n):
         next(f)
     return
+
+flo_sample = open("TestFile01.txt", "a+", encoding='utf8', errors='ignore')
+flo_sample.seek(0, 0)
+for idx in range(15):
+    text = flo_sample.readline()
+    print("What did I read? %6d %s" % (idx+1, text), end=' ')
+
+flo_sample.write(" ******** Now Trying to append a new line ********** \n")
+# txt.seek(0, 0)
+flo_sample.close()
+
 
 
 lstsss = ['Alice', 'Mayya', 'Vera', 'Aaron', 'Maple', 'Linden', 'Oak', 'Mum', 'Tenor', ' Reason', 'Aaron', 'Memphis', 'Aaron']

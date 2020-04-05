@@ -1,6 +1,8 @@
 import math
 import re
 import MyFunctions
+#import python_dateutil
+from dateutil.relativedelta import *
 
 import smtplib, ssl
 
@@ -118,6 +120,82 @@ xxxxx = 0
 # Yuriy.
 # """
 # server.sendmail(sender_email, receiver_email, message)
+
+# Learning how to manipulate date/time
+
+from datetime import date, time, timedelta, datetime
+
+dtm101 = datetime(2020, 4, 6, 20, 30, 1)
+dtm102 = dtm101 + timedelta(days=2, minutes=3, seconds=15)
+print(dtm102, "result")
+
+dt001 = date(2002, 12, 31)
+print(dt001)
+
+dt002 = dt001.replace(day=26)
+print(dt002)
+
+d_today = date.today()
+print(d_today)
+
+
+tm001 = time(3, 34, 56, 892)
+print(tm001)
+
+dt_today = datetime.today()
+print(dt_today)
+print(dt_today.timetz())
+
+dt_now = datetime.now()
+print(dt_now)
+print(dt_now.timetz())
+
+print("Year  in dt_now ",  dt_now.year)
+print("Month in dt_now ", dt_now.month)
+print("Day   in dt_now ", dt_now.day)
+
+print("Hour   in dt_now ", dt_now.hour)
+print("Minute in dt_now ", dt_now.minute)
+print("Second in dt_now ",  dt_now.second)
+
+print("Weekday in dt_now ",  dt_now.weekday())
+
+curr_dt01 = datetime(2020, 4, 20, 10, 30, 8)
+curr_dt02 = datetime(1981, 10, 26, 16, 20, 0)
+Alex_age = curr_dt01 - curr_dt02
+
+print(Alex_age)
+
+print("Days ", Alex_age.days, "   Secs ",  Alex_age.seconds, "  Mcs ", Alex_age.microseconds, "  Resolution ",
+       Alex_age.resolution, "  min ", Alex_age.min, "  max ", Alex_age.max)
+
+dt_rel = relativedelta(curr_dt01, curr_dt02)
+
+print(dt_rel)
+
+print(dt_rel.years)
+print(dt_rel.months)
+print(dt_rel.days)
+print(dt_rel.hours)
+print(dt_rel.minutes)
+print(dt_rel.seconds)
+print(dt_rel.microseconds)
+
+
+weekno = datetime.today().weekday()
+
+if weekno < 5 :
+    print("Weekday")
+else:
+    print("Weekend")
+
+
+
+
+
+
+
+
 
 
 # Learning Files Input abd Output April 2

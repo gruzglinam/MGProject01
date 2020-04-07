@@ -136,7 +136,18 @@ dt002 = dt001.replace(day=26)
 print(dt002)
 
 d_today = date.today()
-print(d_today)
+print(d_today, "testing curr date format")
+# f_date = date.fromisoformat([d_today])
+# print(f_date)
+print(d_today.year)
+print(d_today.month)
+print(d_today.day)
+print(d_today.weekday())
+week_days = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Friday", 5: "Saturday", 6: "Sunday"}
+print(week_days[d_today.weekday()])
+d_tomorrow = d_today + timedelta(days = 1)
+print(d_tomorrow)
+
 
 
 tm001 = time(3, 34, 56, 892)
@@ -171,7 +182,8 @@ print("Days ", Alex_age.days, "   Secs ",  Alex_age.seconds, "  Mcs ", Alex_age.
 
 dt_rel = relativedelta(curr_dt01, curr_dt02)
 
-print(dt_rel)
+
+print(dt_rel, "relative data")
 
 print(dt_rel.years)
 print(dt_rel.months)
@@ -327,17 +339,18 @@ percentage = yes_votes / (yes_votes + no_votes)
 teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percentage + 2.3)
 print(teststr)
 
-
+# Zero evaluated as false expression "If not element" apply to Zero
 a = [0, 1, 2]
+
 for element in a:
     if not element:
         pass
-    print(element)
+    print(element, "testing pass")
 
 for element in a:
     if not element:
         continue
-    print(element)
+    print(element, "testing continue")
 
 # change this code
 number = 16
@@ -435,7 +448,7 @@ lst_interview = [11, 22, -33, 44, 55, 66, 77, 88, 99]
 # var_sum = sum(lst_interview, 7)
 varx = lst_interview[-1]
 varx = lst_interview[-6:-1]
-var_sum = sum(lst_interview[-6:-2])
+#var_sum = sum(lst_interview[-6:-2])
 
 
 
@@ -455,13 +468,15 @@ var_sum = sum(lst_interview[-6:-2])
 #     return max
 
 
-max_back = fnc_fnd_max(lst_interview)
-print("max_back :", max_back)
+# max_back = fnc_fnd_max(lst_interview)
+# print("max_back :", max_back)
 
 
 # project: get familiar with CLASS 03/26/2020
 
 class Car:
+
+    sound = "Waff!"
 
     def __init__(self, pmake, pmodel, pyear, pcolor):
         self.make = pmake
@@ -475,14 +490,30 @@ class Car:
         else:
             return False
 
+    def __str__(self):
+        return "Make=" + self.make + "##Model=" + self.model + "##Year=" + str(self.year) + "##Color=" + self.color
+
     def all_info(self):
         return self.make + ' ' + self.model + ' ' + str(self.year) + ' ' + self.color
 
 
+
+
 car101 = Car("Honda", "Accord", 1995, "orange")
+car101.doors = 4
+print(car101)
+car101str = str(car101)
+print(car101str)
+print(car101.all_info())
 car102 = Car("Honda", "Civic", 2010, "white")
+Car.sound = 'Grrr!'
+car102.sound = 'rrraf!'
 car103 = Car("Honda", "Accord", 1995, "black")
 car104 = Car("Nissan", "Civic", 2010, "grey")
+
+dt_mmm = datetime.now()
+dt_mmm.haha = 78
+
 
 if car101 == car102:
     print(car101.all_info(), " == ", car102.all_info())

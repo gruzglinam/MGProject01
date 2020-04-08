@@ -125,6 +125,13 @@ xxxxx = 0
 
 from datetime import date, time, timedelta, datetime
 
+tdl101 = timedelta(weeks=2, minutes= 50)
+print(tdl101.days)
+tdl102 = timedelta(weeks = 5, minutes = 90)
+tdl103 = tdl101 + tdl102
+#tdl104 = tdl101 + 3
+
+
 dtm101 = datetime(2020, 4, 6, 20, 30, 1)
 dtm102 = dtm101 + timedelta(days=2, minutes=3, seconds=15)
 print(dtm102, "result")
@@ -137,8 +144,20 @@ print(dt002)
 
 d_today = date.today()
 print(d_today, "testing curr date format")
-# f_date = date.fromisoformat([d_today])
-# print(f_date)
+d_time = datetime.today()
+print(d_time, "curr time")
+# ctime format   ##############
+d_time1 = datetime.today().ctime()
+print(d_time1)
+print("tested ctime")
+# strftime format ##############
+x = datetime(2018, 9, 15)
+print(x)
+print(x.strftime("%b %d %Y %H:%M:%S"))
+print("tested strftime")
+print(x.strftime("%A %B %d %Y %H:%M:%S"))  # A - full day WEDNESDAY a - three letters, same with Month name B, or b
+print("tested strftime with weekday")
+print(x.strftime('%b/%d/%Y'))
 print(d_today.year)
 print(d_today.month)
 print(d_today.day)
@@ -147,8 +166,8 @@ week_days = {0: "Monday", 1: "Tuesday", 2: "Wednesday", 3: "Thursday", 4: "Frida
 print(week_days[d_today.weekday()])
 d_tomorrow = d_today + timedelta(days = 1)
 print(d_tomorrow)
-
-
+d_yesterday = d_today + timedelta(days = - 1)
+print(d_yesterday)
 
 tm001 = time(3, 34, 56, 892)
 print(tm001)
@@ -180,7 +199,7 @@ print(Alex_age)
 print("Days ", Alex_age.days, "   Secs ",  Alex_age.seconds, "  Mcs ", Alex_age.microseconds, "  Resolution ",
        Alex_age.resolution, "  min ", Alex_age.min, "  max ", Alex_age.max)
 
-dt_rel = relativedelta(curr_dt01, curr_dt02)
+dt_rel = relativedelta(curr_dt01, curr_dt02) # difference between two days
 
 
 print(dt_rel, "relative data")

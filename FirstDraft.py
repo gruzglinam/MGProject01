@@ -121,6 +121,95 @@ xxxxx = 0
 # """
 # server.sendmail(sender_email, receiver_email, message)
 
+# learning classes April 8th - 9th 2020
+
+class Employee(object):
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def __new__(cls, name, salary):
+        if 0 < salary < 10000:
+            return object.__new__(cls)
+        else:
+            return None
+
+    def __str__(self):
+         return '{0}  ( {1} )'.format(self.__class__.__name__, self.__dict__)
+
+
+emp_tom = Employee('Tom', 8000)
+print(emp_tom)
+
+#  Employee({'name': 'Tom', 'salary': 8000})
+
+emp_richard = Employee('Richard', 20000)
+print(emp_richard)
+
+
+
+
+class Cloth():
+    def __init__(self, pgender, pseason, pdesigner):
+        self.gender = pgender
+        self.season = pseason
+        self.designer = pdesigner
+
+    def __str__(self):
+        return "Gender: " + self.gender + " season: " + self.season + " designer: " + self.designer
+
+
+class Talbot(Cloth):
+    def __init__(self, pgender, pseason, pdesigner, plocation):
+#       self.gender = pgender
+#       self.season = pseason
+#       self.designer = pdesigner
+        self.location = plocation
+        super().__init__(pgender, pseason, pdesigner)
+
+
+    def __str__(self):
+        return "Gender: " + self.gender + " season: " + self.season + " designer: " + self.designer
+
+
+
+
+item010 = Cloth('women', 'summer', 'vince')
+print(item010)
+item020 = Talbot('men', 'fall', 'vince', 'harding twn')
+print(item020)
+
+
+
+
+
+
+
+
+
+
+class Computer():
+    def __init__(self, make, ram, storage):
+        self.make = make
+        self.ram = ram
+        self.storage = storage
+
+
+# Class Mobile inherits Computer
+class Mobile(Computer):
+    def __init__(self, make, ram, storage, model):
+        super().__init__(make, ram, storage)
+        self.model = model
+
+
+mob_dev01 = Mobile('Apple', 2, 64, 'iPhone X')
+print('The mobile is:', mob_dev01.make)
+print('The RAM is:', mob_dev01.ram)
+print('The storage is:', mob_dev01.storage)
+print('The model is:', mob_dev01.model)
+
+
+
 # Learning how to manipulate date/time
 
 from datetime import date, time, timedelta, datetime

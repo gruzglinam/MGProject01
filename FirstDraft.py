@@ -120,8 +120,35 @@ xxxxx = 0
 # Yuriy.
 # """
 # server.sendmail(sender_email, receiver_email, message)
+#salving problems in python
+# Write a Python class to find validity of a string of parentheses, '(', ')', '{', '}', '[' and '].
+# These brackets must be close in the correct order, for example "()" and "()[]{}" are valid but "[)", "({[)]" and "{{{" are invalid.
 
-# learning classes April 8th - 9th 2020
+def chk_syntax(pstr):
+    lst_stack = []
+    for inx in pstr:
+        if inx in ("[", "(", "{"):
+            lst_stack.append(inx)
+        elif inx in ("]", ")", "}"):
+            if not lst_stack:
+                return 1   # closing bracket and no opening
+            else:
+                chk_num = lst_stack.pop()
+                if not ( (inx == ")" and chk_num == "(") or (inx == "]" and chk_num == "[") or (inx == "}" and chk_num == "{" ) ):
+                    return 2  #  mismatching
+
+    if lst_stack:
+        return 3   # EOL and non matched opening brackets
+
+    return 0
+
+
+line_to_verify = "[[[[[((((ABCD###(EFG&&&)))))???]"
+print(chk_syntax(line_to_verify))
+
+
+
+    # learning classes April 8th - 9th 2020
 
 class Employee(object):
     def __init__(self, name, salary):
@@ -159,13 +186,10 @@ class Cloth():
         return "Gender: " + self.gender + " season: " + self.season + " designer: " + self.designer
 
 
-class Talbot(Cloth):
-    def __init__(self, pgender, pseason, pdesigner, plocation):
-#       self.gender = pgender
-#       self.season = pseason
-#       self.designer = pdesigner
+class Talbot():
+    def __init__(self, pdesigner, plocation):
         self.location = plocation
-        super().__init__(pgender, pseason, pdesigner)
+
 
 
     def __str__(self):

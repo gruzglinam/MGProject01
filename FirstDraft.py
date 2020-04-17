@@ -120,6 +120,312 @@ xxxxx = 0
 # Yuriy.
 # """
 # server.sendmail(sender_email, receiver_email, message)
+
+#  \s whitespace
+#  \d any digit
+
+# [abd]
+#Write a Python program which accepts a sequence of comma-separated numbers from user and generate a list and a tuple with those numbers
+
+class List_and_tuple():
+    def __init__(self, pstring):
+        self.strval = pstring
+
+    def  ret_list(self):
+        return [int(s) for s in self.strval.split(',')]
+
+    def ret_tuple(self):
+        return tuple(  [int(s) for s in self.strval.split(',')]   )
+
+    def xret_list(self):
+        return eval('[' + self.strval + ']')
+
+    def xret_tuple(self):
+        return eval('(' + self.strval + ',)')
+
+
+ins_out = List_and_tuple('3, 56, 139')
+ins_out2 = List_and_tuple('549')
+
+tpl201x = ins_out2.xret_tuple()
+print(tpl201x)
+
+
+
+lst101 = ins_out.ret_list()
+print(lst101)
+
+lst101x = ins_out.xret_list()
+print(lst101)
+
+tpl102 = ins_out.ret_tuple()
+print(tpl102)
+
+tpl102x = ins_out.xret_tuple()
+print(tpl102x)
+
+
+
+
+#Write a Python program which accepts the user's first and last name and print them n reverse order with a space between them.
+
+class Person():
+    def __init__(self, pfirst_name, plast_name):
+        self.lst_person = [plast_name, pfirst_name]
+
+    def __str__(self):
+        return ' '.join(self.lst_person)
+
+    def  rev_name(self):
+        return ' '.join( list(reversed(self.lst_person)) )
+
+prs01 = Person('Mayya', 'Gruzglina')
+print(prs01)
+
+print(prs01.rev_name())
+
+
+
+class full_name():
+    def __init__(self, pfirst_name, plast_name):
+        self.first_name = pfirst_name
+        self.last_name = plast_name
+
+    def __str__(self):
+        return self.last_name + ' ' + self.first_name
+
+    def  rev_name(self):
+        return self.first_name + ' ' + self.last_name
+
+    def to_dict(self):
+        d = {}
+        d["attr1"] = self.last_name
+        d["attr2"] = self.first_name
+        return d
+
+
+full_name = full_name('Mayya', 'Gruzglina')
+print(full_name)
+
+rev101 = full_name.rev_name()
+print(rev101)
+
+print(rev102 := full_name.rev_name())
+
+
+
+
+rev_name = full_name(d)
+
+
+
+
+
+
+
+# display curr day excersise
+
+from datetime import date, time, timedelta, datetime
+d_today = date.today()
+print(d_today, "testing curr date format")
+d_time = datetime.today()
+print(d_time, "curr time")
+# ctime format   ##############
+d_time1 = datetime.today().ctime()
+print(d_time1)
+print("tested ctime")
+# strftime format ##############
+x = datetime(2018, 9, 15)
+print(x)
+print(x.strftime("%b %d %Y %H:%M:%S"))
+print("tested strftime")
+print(x.strftime("%A %B %d %Y %H:%M:%S"))  # A - full day WEDNESDAY a - three letters, same with B - Month, or b
+print("tested strftime with weekday")
+print(x.strftime('%b/%d/%Y'))
+print(d_today.year)
+print(d_today.month)
+print(d_today.day)
+print(d_today.weekday())
+
+
+# Twinkle excersise
+file_sample = open("TestFile02.txt", "r", encoding='utf8', errors='ignore')
+file_text = file_sample.read()
+lst_file = []
+out_str = None
+for elm in file_text:
+    if re.match(r'[A-HJ-Z]', elm):
+        if out_str != None:
+            lst_file.append(out_str)
+        out_str = elm
+    else:
+        out_str += elm
+
+if out_str != None:
+    lst_file.append(out_str)
+
+file_sample.close()
+
+
+rx01 = re.split(r'\b[ABCDEFGHJKLMNOPQRSTUVWXYZ]', '   qkk2464 ')
+rx01 = re.split(r'\b[ABCDEFGHJKLMNOPQRSTUVWXYZ]', ' Hello my little Boy. You got to go Home qkk2464 ')
+
+rx01 = re.match(r'\b[ABCDEFGHJKLMNOPQRSTUVWXYZ]', ' Hello my little Boy. You got to go Home qkk2464 ')
+
+
+
+
+
+rx01 = re.match(r'^\s*[akq]\d+\s*$', ' 2464 ')
+rx01 = re.match(r'^\s*[akq]\d+\s*$', '   a2464 ')
+rx01 = re.match(r'^\s*[akq]\d+\s*$', '   k2464 ')
+rx01 = re.match(r'^\s*[akq]\d+\s*$', '   q2464 ')
+rx01 = re.match(r'^\s*[akq]{3,5}\d+\s*$', '   qkk2464 ')
+
+
+
+rx01 = re.match(r'^\s*\d+\s*$', ' 2464 ')
+rx01 = re.match(r'^\s*\d+\s*$', 'g   2464 ')
+rx01 = re.match(r'^\s*\d+\s*$', ' 24j64 ')
+
+rx01 = re.match(r'^\s*\d+\s*$', '2464   ')
+rx01 = re.match(r'^\s*\d+\s+$', '  2464')
+rx01 = re.match(r'^\s*\d+\s*$', ' 2464g  ')
+
+
+
+
+rx01 = re.match(r'.*\s+$', '')
+rx01 = re.match(r'.*\s+$', '           ')
+
+
+rx01 = re.match(r'.*\s+$', '  ')
+rx01 = re.match(r'.*\s+$', '')
+rx01 = re.match(r'.*\s+$', '           ')
+rx01 = re.match(r'.*\s+$', ' v  ')
+rx01 = re.match(r'.*\s+$', 'X    v  ')
+rx01 = re.match(r'.*\s+$', 'd  ')
+rx01 = re.match(r'.*\s+$', '  c')
+
+
+print("Peter\nDonald")
+print(r"Peter\nDonald")
+
+
+def this_class_name(pinstance):
+    return pinstance.__class__.__name__
+
+
+#Write a Python class named Circle constructed by a radius and two methods
+#which will compute the area and the perimeter of a circle.
+
+class  circle_calc():
+    def __init__(self, pradius):
+        self.radius = pradius
+
+    def calc_circle_area(self):
+        return self.radius ** math.pi
+
+    def calc_circle_perimeter(self):
+        return self.radius * 2 * math.pi
+
+
+circle_result_back = circle_calc(15)
+print(this_class_name(circle_result_back))
+print(circle_result_back.calc_circle_area())
+print(circle_result_back.calc_circle_perimeter())
+
+
+#Write a Python class named Rectangle constructed by a length and width
+#and a method which will compute the area of a rectangle.
+
+class  area_of_rectangle():
+    def __init__(self, pwidth, plenght):
+        self.width = pwidth
+        self.lenght = plenght
+
+    def calc_area(self):
+        return self.width * self.lenght
+
+
+result_back = area_of_rectangle(5, 6)
+print(this_class_name(result_back))
+print(result_back.calc_area())
+
+
+#class that take string from the user, and print string
+
+class Print_str():
+    def __init__(self):
+        self.string = None
+
+    def get_String(self, pstring):
+        self.string = pstring
+
+    def print_String(self):
+        print(self.string.upper())
+
+
+my_str101 = Print_str()
+my_str101.get_String("low case dummy teacher")
+my_str101.print_String()
+
+
+my_str = Print_str('all low case')
+print(my_str)
+
+
+
+#solving problems in python:
+#Write a Python class to reverse a string word by word.
+
+str001 = 'hello .py to be or not to be, this is the question'
+lst001 = str001.split()
+lst002 = reversed(lst001)
+
+str_rev1 = ' '.join(lst002)
+
+str_reversed = ' '.join(reversed( str001.split() ))
+
+
+
+# for i in reversed(range(0, len(lst001)):
+#     print(lst001)
+
+#solving problems in python:
+#Write a Python class to find the three elements that sum to zero from a set of n real numbers
+
+lst_of_num = [-25, -10, -7, -3, 2, 4, 8, 10]
+lst_of_three = []
+
+for i1 in range(0, len(lst_of_num)):
+    for i2 in range((i1 +1), len(lst_of_num)):
+        for i3 in range((i2 +1), len(lst_of_num)):
+            if lst_of_num[i1] + lst_of_num[i2] + lst_of_num[i3] == 0:
+                lst_of_three.append((i1, i2, i3))
+
+
+#solving problems in python: Write a Python class to find a pair of elements (indices of the two numbers)
+#from a given array whose sum equals a specific target number.
+
+lst_in_num = [10, 20, 10, 40, 50, 60, 70]
+target_num = 50
+
+
+def two_num_indice(plst_in_num, ptarget_num):
+
+    lst_of_tup = []
+
+    for i in range(0, len(plst_in_num)):
+        for j in range((i + 1), len(plst_in_num)):
+            if plst_in_num[i] + plst_in_num[j] == ptarget_num:
+                lst_of_tup.append((i, j))
+    return lst_of_tup
+
+
+print(two_num_indice(lst_in_num, target_num))
+
+
 #salving problems in python
 # Write a Python class to find validity of a string of parentheses, '(', ')', '{', '}', '[' and '].
 # These brackets must be close in the correct order, for example "()" and "()[]{}" are valid but "[)", "({[)]" and "{{{" are invalid.
@@ -1027,6 +1333,7 @@ for word in sorted(dct_word_freq, key=lambda x: dct_word_freq[x], reverse=True):
     print(word, dct_word_freq[word])
 
 pass
+
 
 print(('aa', 'ab') < ('abc', 'a'))
 

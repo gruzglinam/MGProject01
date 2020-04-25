@@ -4,7 +4,7 @@ List manipulation
 https://note.nkmk.me/en/python-list-clear-pop-remove-del/
 
 
-File manipulation:
+File manipulations:
 
 - good explanation of file opening modes and operations
 https://www.geeksforgeeks.org/file-objects-python/

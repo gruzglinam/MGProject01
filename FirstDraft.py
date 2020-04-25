@@ -1,6 +1,7 @@
 import math
 import re
 import MyFunctions
+import calendar
 #import python_dateutil
 from dateutil.relativedelta import *
 
@@ -121,11 +122,447 @@ xxxxx = 0
 # """
 # server.sendmail(sender_email, receiver_email, message)
 
-#  \s whitespace
-#  \d any digit
+# Learning calendar (import calendar)
 
-# [abd]
-#Write a Python program which accepts a sequence of comma-separated numbers from user and generate a list and a tuple with those numbers
+#(NOL, ODIN, DVA, TRI, CHETYRE) = range(7)
+
+#Write a Python program to find a missing number from a list.
+#Input : [1,2,3,4,6,7,8]
+#Output : 5
+
+#lst_input = [1, 2, 3, 4, 6, 7, 8]
+lst_input = [1, 2, 3, 4, 6, 7, 10]
+dic_interval = {}
+step = 9
+
+for x in range(0, len(lst_input) - 1):
+    dic_interval[x] = (lst_input[x + 1]) - (lst_input[x])
+
+    for k, v in dic_interval.items():
+        if v < step:
+           step = v
+           print(step)
+
+delta = step
+for d in range(lst_input[k] + step, lst_input[k + 1]):
+    lst_input.insert(k + delta, d)
+    delta += step
+
+zzzz = 0
+#lst_input[]
+
+
+
+
+
+
+
+import os.path
+import struct
+
+#Write a Python program to determine if a Python shell is executing in 32bit or 64bit mode on OS.
+print(struct.calcsize("P") * 8)   # shall import struct
+
+
+
+# check if file exists. should import os.path
+
+#file_content = open('TestFile02.txt', 'w')
+#print(os.path.isfile('TestFile02.txt'))  # returns true of false. should import os.path
+var001 = os.path.abspath("TestFile02.txt")  # return exact path.should import os.path
+
+
+
+# Write a Python program to check whether a file exists
+
+# Write a Python program to compute the distance between the points (x1, y1) and (x2, y2).
+
+class Pif_agor():
+    def __init__(self, px1, py1, px2, py2):
+        self.x1 = px1
+        self.y1 = py1
+        self.x2 = px2
+        self.y2 = py2
+        self.catet1 = (self.x2 - self.x1) ** 2
+        self.catet2 = (self.y2 - self.y1) ** 2
+        self.hipotenuza = (self.catet1 + self.catet2)
+
+    def calc_rtn(self):
+        return math.sqrt(self.hipotenuza)
+
+pif_inst = Pif_agor(4, 5, 9, 12)
+distance = pif_inst.calc_rtn()
+print(distance)
+
+
+
+# Write a Python program to display your details like name, age, address in three different lines
+
+lst_personal_info = []
+str_personal_info = 'Mayya Gruzglina, 60 yrs old, 2 Beech lane Morristown NJ 07960'
+lst_personal_info = str_personal_info.split(',')
+for x in range(0, len(lst_personal_info)):
+    print(lst_personal_info[x])
+
+
+# Write a Python program to sum of two given integers. However, if the sum is between 15 to 20 it will return 20.
+# Write a Python program that will return true if the two given integer values are equal or their sum or difference is 5 - add function to below class
+
+class Calc_sum():
+    def __init__(self, pnum01, pnum02):
+        self.sum = pnum01 + pnum02
+        self.num01 = pnum01
+        self.num02 = pnum02
+
+    def calc_two_num_sum(self):
+        return 20 if 15 <= self.sum <= 20 else self.sum
+
+    def true_or_false(self):
+        return True if (self.num01 == self.num02) or (self.num01 - self.num02 == 5) or (self.num01 + self.num02 == 5) else False
+
+
+parm_numbers = Calc_sum(10, 6)
+sum_back = parm_numbers.calc_two_num_sum()
+print(sum_back)
+second_chk = parm_numbers.true_or_false()
+print(second_chk)
+
+
+#Write a Python program to sum of three given integers. However, if two values are equal sum will be zero.
+
+class Ret_a_sum():
+    def __init__(self, pnum1, pnum2, pnum3):
+        self.set01 = {pnum1, pnum2, pnum3}
+        self.sum = pnum1 + pnum2 + pnum3
+
+    def  calc_rtn(self):
+        return 0 if len(self.set01) != 3  else self.sum
+
+
+parms_to_class = Ret_a_sum(5, 3, 4)
+sum_back = parms_to_class.calc_rtn()
+print(sum_back)
+
+# Write a Python program to print out a set containing all the colors from color_list_1 which are not present in color_list_2
+
+color_list_1 = set(["White", "Black", "Red"])
+color_list_2 = set(["Red", "Green"])
+color_list3 = color_list_1 | color_list_2
+print(color_list3)
+print(color_list_1 - color_list_2)
+print(color_list_2 - color_list_1)
+print(color_list_1 & color_list_2)
+
+
+#Write a Python program to print all even numbers from a given numbers list in the same order and stop the printing if any numbers that come after 237 in the sequence
+
+
+numbers = [
+    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345,
+    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217,
+    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717,
+    958,743, 527
+    ]
+
+for x in numbers:
+    if (x / 2).is_integer :
+        print(x)
+    elif x == 237:
+        break
+
+#Write a Python program to concatenate all elements in a list into a string and return it.
+
+class Ret_a_string():
+
+    def __init__(self, plist):
+        self.list002 = plist
+        self.string = ''
+
+    def concat_rtn(self):
+        for x in self.list002:
+            self.string += x
+        return self.string
+
+
+parm_to_cls = Ret_a_string(['a', '3', '6', '4', 'f'])
+str_back = parm_to_cls.concat_rtn()
+print(str_back)
+
+
+# Write a Python program to check whether a specified value is contained in a group of values.
+
+class Value_chk():
+    def __init__(self,pchk_value,plist):
+        self.chk_value = pchk_value
+        self.list_of_values = plist
+
+    def check_value(self):
+        for x in range(0, len(self.list_of_values)):
+            return True if self.list_of_values[x] == self.chk_value else False
+
+
+parms_to_cls = Value_chk(-1, [9, 1, 5, 3, 7, 2])
+true_or_false = parms_to_cls.check_value()
+print(true_or_false)
+
+
+
+#Write a Python program to get the n (non-negative integer) copies of the first 2 characters of a given string. Return the n copies of
+#whole string if the length is less than 2.
+
+
+class Rtn_copy():
+    def __init__(self,pnum, pstring):
+        self.num = pnum
+        self.string = pstring
+
+    def ret_string_copy(self):
+        return (self.string[0:2] * self.num) if len(self.string) > 2 else self.string[0] * self.num
+
+
+parm_to_cls = Rtn_copy(3, 'a')
+copy_back = parm_to_cls.ret_string_copy()
+print(copy_back)
+
+
+#Write a Python program to test whether a passed letter is a vowel or not.
+
+
+class Check_letter():
+    def __init__(self, pletter, plist):
+        self.list01 = plist
+        self.letter = pletter
+
+    def chk_if_vow(self):
+        for idx in range(0, len(self.list01)):
+            if self.list01[idx] == self.letter:
+                return 'The letter is a vowel'
+            else:
+                 return 'The letter is a consonance'
+
+
+str_let = Check_letter('K', ['A', 'E', 'I', 'O', 'U', 'Y'])
+str_back = str_let.chk_if_vow()
+print(str_back)
+
+
+#Write a Python program to count the number 4 in a given list.
+
+lst002 = [2, 5, 4, 7, 5, 4, 4, 6, 1]
+
+lst_cnt = lst002.count(4)
+print(lst_cnt)
+
+
+#Write a Python program to find whether a given number (accept from the user) is even or odd, print out an appropriate message to the user.
+
+class  Odd_even():
+    def __init__(self,pnum):
+        self.num = pnum
+
+    def  calc_num(self):
+        return "The number is even" if (self.num / 2).is_integer() else 'The number is odd'
+
+pass_num = Odd_even(8)
+odd_or_even = pass_num.calc_num()
+print(odd_or_even)
+
+
+#Write a Python program to get a new string from a given string where "Is" has been added to the front.
+#if the given string already begins with "Is" then return the string unchanged.
+
+str001 = 'Is the weather is rainy today?'
+# print(str001.upper().startswith('IS'))
+if (str001.upper().startswith('IS')):
+    print(str001)
+else:
+    print('Is' + str001 + ' false')
+
+
+#Write a Python program to calculate the sum of three given numbers, if the values are equal then return three times of their sum.
+
+class Calc_sum():
+    def __init__(self, pnum1, pnum2, pnum3):
+        self.num1 = pnum1
+        self.num2 = pnum2
+        self.num3 = pnum3
+
+    def calc_rtn(self):
+        return (self.num1 + self.num2 + self.num3) * 3 if self.num1 == self.num2 and self.num1 == self.num3 else (self.num1 + self.num2 + self.num3)
+
+sum_init = Calc_sum(3, 3, 3)
+sum_rsl  = sum_init.calc_rtn()
+print(sum_rsl)
+
+
+#Write a Python program to test whether a number is within 100 of 1000 or 2000.
+
+class Check_range():
+    def __init__(self, pnum):
+        self.num = pnum
+
+    def num_within(self):
+        if self.num  < 100 and self.num > 0:
+            return 'Number within 100'
+        elif self.num  <= 1000 and self.num >= 100:
+            return 'Number within 1000'
+        elif self.num <= 2000 and self.num > 1000:
+            return 'Number within 2000'
+
+test_num = Check_range(99)
+str_back= test_num.num_within()
+print(str_back)
+
+test_num = Check_range(125)
+str_back= test_num.num_within()
+print(str_back)
+
+test_num = Check_range(1432)
+str_back= test_num.num_within()
+print(str_back)
+
+
+
+
+
+
+#Write a Python program to get the difference between a given number and 17,
+#if the number is greater than 17 return double the absolute
+
+class Calc_diff():
+    given_num = 17
+
+    def __init__(self, pnum):
+        self.num = pnum
+
+    def calc_num(self):
+        # if (self.num > Calc_diff.given_num):
+        #     return abs(Calc_diff.given_num - self.num) * 2
+        # else:
+        #     return Calc_diff.given_num  - self.num
+        return abs(Calc_diff.given_num - self.num) * 2 if self.num > Calc_diff.given_num else Calc_diff.given_num - self.num
+
+
+
+create_ins = Calc_diff(19)
+num_back = create_ins.calc_num()
+print(num_back)
+
+
+
+#Write a Python program to calculate number of days between two dates.
+
+from datetime import date, time, timedelta, datetime
+
+curr_dt01= date(2014, 7, 2)
+curr_dt02 = date(2014, 7, 11)
+print(curr_dt02)
+
+dt_rel = relativedelta(curr_dt02, curr_dt01)  # difference between two days
+print(dt_rel.days)
+curr_dt01= date(2014, 7, 2)
+
+curr_dt03 = curr_dt02 - curr_dt01
+print(curr_dt03.days)
+
+#print(dt_rel)
+
+
+
+
+yy = 2017
+mm = 11
+
+# display the calendar
+#print(calendar.month(yy, mm))
+#print(calendar.calendar(2018, 2, 1, 6))
+# print(calendar.February()
+print(calendar.weekday(2020,4,21))
+print(calendar.weekheader(10))
+
+
+
+# Write a Python program that accepts an integer (n) and computes the value of n+nn+nnn.
+# N + NN + NNN ( 5 + 55 + 555) = 615
+
+num1 = 5
+num2 = eval( str(num1 + num1))
+num3 = eval("'" + str(num1 + num1) + "'")
+
+
+class Calc_sum():
+    def __init__(self, pnum):
+        self.num = pnum
+        return
+
+    def ret_sum(self):
+        s = str(self.num)
+#       stoeval = s + '+' + s + s + '+' + s + s + s
+        stoeval = s + '+' + s*2 + '+' + s*3
+        print(stoeval)
+        return  eval(stoeval)
+
+ev101 = Calc_sum(7)
+res101 = ev101.ret_sum()
+
+print(res101)
+
+
+# Write a Python program to display the examination schedule. (extract the date from exam_st_date).
+# exam_st_date = (11, 12, 2014)
+
+exam_st_date = (11, 12, 2014)
+from datetime import date, time, timedelta, datetime
+
+for x in range(0, len(exam_st_date)):
+    print(exam_st_date[x])
+
+x = datetime(exam_st_date[-1], exam_st_date[0], exam_st_date[1])
+print(x.strftime("%Y/%m/%d"))
+print(x)
+
+
+
+# Write a Python program to display the first and last colors from the following list.
+# ["Red","Green","White" ,"Black"]
+
+color_list = ['Red', 'Green', 'White', 'Black']
+
+print('First color and last color from the list: %s, %s' % (color_list[0], color_list[-1]) )
+
+
+# Write a Python program to accept a filename from the user and print the extension of that.
+
+class File_name():
+    def __init__(self, pfile_n):
+        self.file_n = pfile_n
+
+    def file_ext(self):
+#      lst_file_name = self.file_n.split('.')
+#      ext = lst_file_name.pop()
+#      return ext
+
+       lsttmp = self.file_n.split('.')
+       return lsttmp.pop() if len(lsttmp) > 1 else '<No extension>'
+
+
+
+ext_name = File_name('abc.java')
+ext_n = ext_name.file_ext()
+print(ext_n)
+
+ext_name101 = File_name('.ahahahahaha')
+ext_n101 = ext_name101.file_ext()
+print(ext_n101)
+
+ext_name102 = File_name('hahaha')
+ext_n102 = ext_name102.file_ext()
+print(ext_n102)
+
+
+
+
+# Write a Pyreturn [int(s) for s in self.strval.split(',')]thon program which accepts a sequence of comma-separated numbers from user and generate a list and a tuple with those numbers
 
 class List_and_tuple():
     def __init__(self, pstring):

@@ -10,6 +10,86 @@ import smtplib, ssl
 
 import asyncio
 
+import pyodbc
+
+# print('Hello World')
+# print('*'*10)
+
+tpl_sal_upd = [
+    ('Gruzglina', 150000),
+    ('King', 125000),
+    ('Fuller', 135000),
+    ('Peacock', 145000)
+]
+
+lst_emp_ins = [('Gnom', 'Grumpy', 'Chef', 'Mr.', '1959-05-02', '1996-10-26', '2 North Pole', 'Dreamland', 'Laplandia', '08960', 'USA', '(973) 714-6530', \
+               None, None, None, 5, None, 150000)]
+
+
+sql_emp_ins = \
+  """
+    insert into Employees (     
+	[LastName],
+	[FirstName],
+	[Title],
+	[TitleOfCourtesy],
+	[BirthDate],
+	[HireDate],
+	[Address],
+	[City],
+	[Region],
+	[PostalCode],
+	[Country],
+	[HomePhone],
+	[Extension],
+	[Photo],
+	[Notes],
+	[ReportsTo],
+	[PhotoPath],
+	[Salary]
+	) Values 
+	( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+	"""
+print(sql_emp_ins)
+
+conn = pyodbc.connect(
+    'Driver={SQL Server};'
+    'Server=DELL-LAPTOP-MG\\MSSQL_VENUS;'
+    'Database=Northwind;'
+    'User=sa;'
+    'Passwd=Vanhe1sing!'
+)
+
+cur = conn.cursor()
+
+
+
+#cntr = cur.execute("delete Employees where EmployeeId = 8")
+cntr = cur.execute(sql_emp_ins, lst_emp_ins[0])
+
+conn.commit()
+print ('Total # of rows: ', cntr)
+
+
+for curr_item in tpl_sal_upd:
+    cntr = cur.execute("update Employees set Salary = ? where LastName = ?", (curr_item[1], curr_item[0])).rowcount
+conn.commit()
+
+
+cntr = cur.execute("SELECT * FROM [Employees] where city =  'London' ").rowcount
+
+
+for row in cur:
+    print(row.Title, row.City, row.Country)
+
+cntr = cur.execute("update Employees set Salary = 110000 where LastName in('Gruzglina', 'King') ").rowcount
+conn.commit()
+print ('Total # of rows: ', cntr)
+conn.close()
+
+
+
+
 
 """
 from tkinter import *
@@ -133,28 +213,36 @@ xxxxx = 0
 #lst_input = [1, 2, 3, 4, 6, 7, 8]
 lst_input = [1, 2, 3, 4, 6, 7, 10]
 dic_interval = {}
-step = 9
+step = 1
 
 for x in range(0, len(lst_input) - 1):
-    dic_interval[x] = (lst_input[x + 1]) - (lst_input[x])
+    if (lst_input[x + 1]) - (lst_input[x]) < step:
+        step = lst_input[x + 1] - lst_input[x]
 
-    for k, v in dic_interval.items():
-        if v < step:
-           step = v
-           print(step)
+for x in range(0, len(lst_input) - 1):
+    if (lst_input[x + 1]) - (lst_input[x]) > 1:
+        dic_interval[x] = (lst_input[x + 1])
 
-delta = step
-for d in range(lst_input[k] + step, lst_input[k + 1]):
-    lst_input.insert(k + delta, d)
-    delta += step
-
-zzzz = 0
-#lst_input[]
-
-
-
+for k, v in dic_interval.items():
+    curr_val = lst_input[k] + 1
+    curr_ind = k + 1
+    while curr_val < v:
+        print('inserting at index', curr_ind, ' value ', curr_val)
+        lst_input.insert(curr_ind, curr_val)
+        curr_ind += 1
+        curr_val += 1
 
 
+
+
+
+# delta = step
+# for d in range(lst_input[k] + step, lst_input[k + 1]):
+#     lst_input.insert(k + delta, d)
+#     delta += step
+#
+# zzzz = 0
+# #lst_input[]
 
 
 import os.path

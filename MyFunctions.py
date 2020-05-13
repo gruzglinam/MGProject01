@@ -6,3 +6,4 @@ def fnc_fnd_max(plist):
             max = plist[inx]
     print(__name__)
     return max
+

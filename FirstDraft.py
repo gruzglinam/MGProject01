@@ -4,6 +4,7 @@ import MyFunctions
 import calendar
 #import python_dateutil
 from dateutil.relativedelta import *
+from datetime import date, time, timedelta, datetime
 
 import smtplib, ssl
 
@@ -11,6 +12,53 @@ import smtplib, ssl
 import asyncio
 
 import pyodbc
+
+#learning lambda
+
+lst_of_str = ['Apple','Orange','Cherry','Melon', 'Potato']
+lst_by_lgth = list(filter(lambda x: (len(x) == 6), lst_of_str))
+print(lst_by_lgth)
+
+lst_st_with = list(filter(lambda x: (x.startswith('A')), lst_of_str))
+print(lst_st_with)
+
+lst_end_with = list(filter(lambda x: (x.endswith('e')), lst_of_str))
+print(lst_end_with)
+
+lst_with_pattern = list(filter(lambda x: ('pp' in x or 'rr' in x), lst_of_str))
+print(lst_with_pattern)
+
+lst_with_pattern1 = list(filter(lambda x: (x.find('rr') >= 0 or x.find('pp') >= 0 ), lst_of_str))
+print(lst_with_pattern1)
+
+
+compute_remainder = lambda x, y: x % y
+r = compute_remainder(7, 2)
+
+print(r)
+
+# learning filtering -->  for d in data ... if d > 50  .... return  --> list comprehention
+
+data = [66, 15, 91, 30, 35, 38, 43, 20, 38, 28, 98, 50, 7, 80, 99]
+filtered = [d for d in data if d > 50]
+print(filtered)
+
+# same using lambda:
+
+filtered = list(filter(lambda x: (x > 50), data))
+print(filtered)
+
+# Map example without lambda
+
+mapped = [(x / 2) for x in data]
+print(mapped)
+
+#Map  with lambda
+
+mapped = list(map(lambda x: (x / 2), data))
+print(mapped)
+
+
 
 # print('Hello World')
 # print('*'*10)
@@ -52,15 +100,71 @@ sql_emp_ins = \
 	"""
 print(sql_emp_ins)
 
+sql_rollup = \
+"""
+WITH OrdRpt AS
+  (SELECT  
+    O.OrderId, D.ProductID, O.CustomerId, O.EmployeeId, D.UnitPrice, D.Quantity
+    FROM  Orders O
+    INNER JOIN [Order Details] D on O.OrderId = D.OrderId
+    WHERE   DATEPART(YY, O.OrderDate) = 1998 and DATEPART(MM, O.OrderDate) = 05
+  )
+ SELECT CustomerID, EmployeeId, OrderId, ProductId, SUM(UnitPrice * Quantity) as Total
+  FROM  OrdRpt
+ GROUP BY ROLLUP(CustomerID, EmployeeId, OrderId, ProductId)
+"""
+
+
 conn = pyodbc.connect(
     'Driver={SQL Server};'
     'Server=DELL-LAPTOP-MG\\MSSQL_VENUS;'
     'Database=Northwind;'
     'User=sa;'
     'Passwd=Vanhe1sing!'
+
 )
 
+
 cur = conn.cursor()
+new_ins = conn.execute("{CALL spEmpInsert (?,?,?)}", ('Galushka', 'Igor', 115000))
+print(new_ins)
+conn.commit()
+
+
+#add_upd = cur.execute("{CALL spAddressUpd (?,?,?,?,?,?)}", (11, '2 Beech Lane', 'Parsippany', 'NJ', '07960', 'UK' ))
+#print(add_upd)
+#conn.commit()
+
+
+#sp_res001 = cur.execute("exec [spOrderRpt](?)", (date(1998, 5, 25),))
+#sp_res001 = cur.execute("exec spOrderRpt @OrderDate = ?", ( date(1998, 5, 25), ) )
+
+sp_res001 = cur.execute("{CALL spOrderRpt (?)}", ( '1998-05-25', ))
+
+#sp_res001 = cur.execute("{CALL spOrderRpt2 (?, ?)}", (1998, 5) )
+
+for row in sp_res001:
+    print(row)
+
+
+cntr = cur.execute(sql_rollup)
+
+for row in cntr:
+    count = len([elem for elem in list(row) if elem == None])
+    if count == 0:
+        d = "{0:8s}  {1:5d}  {2:8d}  {3:8d}  {4:12.2f}".format(row[0], row[1], row[2], row[3], row[4])
+        print(d)
+    elif count == 4:
+        print("Grand Total:                        ", row[4])
+    elif count == 3:
+        print("Total by Customer:                  ", row[4])
+        print()
+    elif count == 2:
+        print("Total by Customer/Employee:         ", row[4])
+    elif count == 1:
+        print("Total by Customer/Employee/Order:   ", row[4])
+
+
 
 
 
@@ -540,7 +644,7 @@ print(num_back)
 
 #Write a Python program to calculate number of days between two dates.
 
-from datetime import date, time, timedelta, datetime
+#from datetime import date, time, timedelta, datetime
 
 curr_dt01= date(2014, 7, 2)
 curr_dt02 = date(2014, 7, 11)
@@ -1299,7 +1403,8 @@ print(format_lt)
 yes_votes = 42_572_654
 no_votes = 43_132_495
 percentage = yes_votes / (yes_votes + no_votes)
-teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percentage + 2.3)
+teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percen
+tage + 2.3)
 print(teststr)
 
 # Zero evaluated as false expression "If not element" apply to Zero

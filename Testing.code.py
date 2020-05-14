@@ -3,6 +3,120 @@ from datetime import date, time, timedelta, datetime
 
 from dateutil.relativedelta import *
 
+#Write a Python program to create Fibonacci series upto n using Lambda.
+
+fib_next = lambda x, y: x + y
+str_fib = [0, 1]
+max_fib = 2000000
+while True:
+    new_elm = fib_next(str_fib[- 1], str_fib[ -2])
+    if new_elm <= max_fib:
+        str_fib.append(new_elm)
+        print (str_fib[-1]/str_fib[-2])
+    else:
+        break
+
+
+#Write a Python program to check whether a given string is number or not using Lambda.
+mynum = lambda q: print(q)
+mynum('accdefg')
+
+is_num = lambda q: q.replace('.','',1).isdigit()
+print(is_num('26587'))
+print(is_num('4.2365'))
+print(is_num('-12547'))
+print(is_num('00'))
+print(is_num('A001'))
+print(is_num('001'))
+print("\nPrint checking numbers:")
+is_num1 = lambda r: is_num(r[1:]) if r[0]=='-' else is_num(r)
+print(is_num1('-16.4'))
+print(is_num1('-24587.11'))
+
+
+
+
+isnum = 'Peter01'.isnumeric()
+isnum = 'Good Morning'.isnumeric()
+isnum = '123yuyuy'.isnumeric()
+isnum = '45'.isnumeric()
+isnum = '78.900'.isnumeric()
+
+s = 'Region'
+res = ''.join(filter(lambda c:  '0' <= c <= '9', s))
+
+s = '2319'
+res = ''.join(filter(lambda c:  '0' <= c <= '9', s))
+
+s = 'Region9337'
+res = ''.join(filter(lambda c:  '0' <= c <= '9', s))
+
+s = 'Reg4747ion'
+res = ''.join(filter(lambda c:  '0' <= c <= '9', s))
+
+
+# true_false = str(lambda x: isnumeric(x))
+#  r = true_false('12345654321')
+#  print(r)
+
+#Write a Python program to filter a list of integers using Lambda.
+
+lst_mix = ['Orange', 123, 'Song', 765, 'Prince', 54]
+filtered = list(filter(lambda x: isinstance(x, (int, float)), lst_mix))
+print(filtered)
+
+#Write a Python program to sort a list of dictionaries using Lambda.
+
+d = { 5: 'Orange', 2: 'Cherry', 1: 'Apple', 4: 'Peach'}
+
+itm = list(d.items())
+
+
+sorted_d = sorted(d.items(), key=lambda x: x[0])
+print(sorted_d)
+
+#Slst_tpl.sort(key=lambda x: x)ort function using Lambda
+lst_tpl = [
+    ("ABC", 123, 321),
+    ("AAA", 767, 111),
+    ("ZZZ", 565, 999)
+    ]
+
+
+
+print(lst_tpl)
+
+
+lst88 = ["Pear", "Apricot", "apple", "Cherry", "Apple", "Apple"]
+lst88.sort(key=lambda x: x.upper())
+lstnew = lst88.sort(key=lambda x: x.upper())
+
+lst88.sort(key=lambda x: x[1:4].upper())  # order by substring
+
+print(lst88)
+print('test point 1')
+print(lstnew)
+
+
+
+
+def func_compute(n):
+ return lambda x : x * n
+result = func_compute(2)
+print("Double the number of 15 =", result(15))
+
+
+
+
+# Write a Python program to create a lambda function that adds 15 to a given number passed in as an argument,
+# also create a lambda function that multiplies argument x with argument y and print the result.
+
+r = lambda a : a + 15
+print(r(10))
+r = lambda x, y : x * y
+print(r(12, 4))
+
+
 
 class Money:
 

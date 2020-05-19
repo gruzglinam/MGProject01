@@ -3,6 +3,213 @@ from datetime import date, time, timedelta, datetime
 
 from dateutil.relativedelta import *
 
+def outputData(**kwargs):
+    print( type(kwargs) )
+    print( kwargs[ "name" ] )
+    print( kwargs[ "num" ] )
+
+
+outputData(name = "John Smith", num = 5, b = True)
+
+def outputData(name, * args):
+    print( type(args) )
+    for arg in args:
+        print(arg)
+
+
+outputData("John Smith", 5, True, "Jess")
+
+#generator
+def square_int(p1, p2):
+    for x in range(p1, p2 + 1):
+        yield x**2
+
+f1 = square_int(3, 10)
+for item in f1:
+    print(item)
+
+
+
+def fib_gen():
+    fib1 = 0
+    fib2 = 1
+    yield fib1
+    yield fib2
+    while True:
+        result = fib1 + fib2
+        fib1 = fib2
+        fib2 = result
+        yield result
+
+
+f = fib_gen()
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+print(next(f))
+
+for item in f:
+    print(item)
+    if item > 500:
+        break
+
+f2 = fib_gen()
+for item in f2:
+    print(item)
+    if item > 500:
+        break
+
+
+
+
+
+#iterator
+
+class Fibsec:
+    def __iter__(self):
+        self.status = 0
+        self.f1 = 0
+        self.f2 = 1
+        return self
+
+    def __next__(self):
+        if self.status == 0:
+            self.status = 1
+            return self.f1
+        elif self.status == 1:
+            self.status = 2
+            return self.f2
+        else:
+            _rslt = self.f1 + self.f2
+            self.f1 = self.f2
+            self.f2 = _rslt
+            return _rslt
+
+
+fb1 = iter(Fibsec())
+
+for item in Fibsec():
+    print (item)
+    if item >= 5000:
+        break
+
+
+print(next(fb1))
+print(next(fb1))
+print(next(fb1))
+print(next(fb1))
+# print(next(fb1))
+# print(next(fb1))
+# print(next(fb1))
+# print(next(fb1))
+# print(next(fb1))
+# print(next(fb1))
+
+
+
+
+
+
+
+class Fib_ser:
+    """Class to implement an iterator
+    Fibonacci series """
+
+    def __init__(self, max = 0):
+        self.max = max
+        self.next_n = []
+
+    def __iter__(self):
+        self.next_n.append(0)
+        self.next_n.append(1)
+        return self
+
+    def __next__(self):
+        if (self.next_n[-1] <= self.max):
+            result = self.next_n[-1] + self.next_n[-2]
+            self.next_n.append(result)
+            return result
+        else:
+            raise StopIteration
+
+
+for item in Fib_ser(500):
+    print(item)
+
+#Write an iterator class reverse_iter, that takes a list and iterates it from the reverse
+
+
+class PowTwo:
+    """Class to implement an iterator
+    of powers of two"""
+
+    def __init__(self, max = 0):
+        self.max = max
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if (self.n <= self.max) or self.max <= 0:
+            result = 2 ** self.n
+            self.n += 1
+            return result
+        else:
+            raise StopIteration
+
+
+for item in PowTwo(0):
+    print(item)
+
+
+x = PowTwo(30)
+y = iter(x)
+
+while True:
+    try:
+        print(next(y))
+    except StopIteration:
+        break
+
+
+
+
+
+
+
+nums = [4, 3, 6, 7, 9]
+it = iter(nums)
+print(next(it))
+print(next(it))
+
+class Tst_iter():
+
+    def __init__(self, max, pnums):
+        self.max = max
+        self.pnums = pnums
+        self.lst_new = []
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+         while True:
+             for x in range(0, self.max):
+                 if x <= self.max:
+                     sorted(self.lst_new.append(self.nums[x]))
+                 else:
+                     raise StopIteration
+             return self.lst_new
+
+
+It = Tst_iter(3, nums)
+print(next(it))
+
+
 #Write a Python program to create Fibonacci series upto n using Lambda.
 
 fib_next = lambda x, y: x + y

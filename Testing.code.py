@@ -3,6 +3,198 @@ from datetime import date, time, timedelta, datetime
 
 from dateutil.relativedelta import *
 
+from itertools import *
+import re
+
+rem = -6 % 2
+
+#Given an integer, perform the following conditional actions:
+
+#If  is odd, print Weird
+#If  is even and in the inclusive range 2 of  to 5 , print Not Weird
+#If  is even and in the inclusive range of 6 to 20 , print Weird
+#If  is even and greater than 20, print Not Weird
+
+class Odd_even():
+    def __init__(self,pnum):
+        self.num = pnum
+
+    def __str__(self):
+        rem = self.num % 2
+        if rem > 0:
+            return "Odd num - weird"
+        elif  2 <=  self.num <= 5:
+            return "Even in range from 2 to 5"
+        elif  6 <=  self.num <= 20:
+            return "Even in range from 6 to 20"
+        elif self.num > 20:
+            return "Even > 20"
+        else:
+            return f"Don't know what to do with {self.num} "
+
+f1 = Odd_even(-5)
+print(f1)
+
+
+
+
+
+
+
+
+
+
+
+
+values = ['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+delimiters = [' ', ';', ',', ',', ',', '']
+less_elm = [ 9, 3, 6, 2, 1]
+more_elm = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+
+x = zip(values, delimiters, less_elm, more_elm)
+#print(list(x))
+for item in x:
+   print(item)
+
+for a, b in x:
+    print(a, b)
+
+
+line = 'asdf fjdk; afed, fjek,asdf, foo'
+lst_line = re.split(r'[;,\s]\s*', line)
+print(lst_line)
+
+
+
+a1 = ['a', 5, 'qwe', 123]
+a2 = ['alj', 456, 'yuy']
+a3 = a1 + a2
+print(a3)
+
+z = 'abcdefg'
+z1 = z[::3]
+print(z1)
+
+
+def zip_merge(lst1, lst2):
+    for idx in range(0, len(lst1)):
+        yield(lst1[idx], lst2[idx])
+
+
+lst_zip = list(zip_merge(['a', 'b', 'c'], [5, 6, 7]))
+print(lst_zip)
+# for x in lst_zip:
+#     print(x)
+
+
+lst_enum = enumerate(['a', 'b', 'c'])
+for k, v in lst_enum:
+    print(k, v)
+
+def enum_func(plst):
+    idx = 0
+    for item in plst:
+        yield (idx, item)
+        idx += 1
+
+
+f1 = enum_func(['a', 'b', 'c'])
+for e0, e1 in f1:
+    print(e0, e1)
+
+
+def peep(itr):
+    itr2 = tee(itr)
+    return next(iter(itr)), tee(itr)
+
+
+
+f1, itr1 = peep(range(7, 21))
+print(f1)
+for item in itr1:
+    print(item)
+
+
+
+def threeval(p1, p2, p3):
+    return p1*3, p2*3, p3*3
+
+x1, x2, x3 = threeval(3, 6, 9)
+print(x1)
+print(x2)
+print(x3)
+
+
+#generator expression
+
+
+a = (x*x for x in range(10))
+for item in a:
+    print(item)
+
+b = (x*x for x in range(10))
+print(sum(b))
+
+
+
+def create_multi(x):
+    def multi(y):
+        return x*y
+
+    return multi
+
+mby25 = create_multi(25)
+mby7 = create_multi(7)
+print(mby25(2))
+print(mby25(3))
+print(mby25(4))
+print(mby25(5))
+
+
+#itertools - standard library. chain
+i = count()
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+
+print(next(count()))
+print(next(count()))
+print(next(count()))
+print(count())
+
+it1 = iter([7, 8, 9])
+it2 = iter(['d', 'e', 'f'])
+print([it1])
+print(it1)
+print([it2])
+it3 = chain([it1], [it2])
+print(it3)
+
+for i in chain([1, 2, 3], ['a', 'b', 'c']):
+    print(i)
+
+# for x, y in izip([1, 2, 3], ['a', 'b', 'c']):
+#     print(x, y)
+
+for x in chain(it1, it2):
+    print(x)
+
+
+
+
+
+a = (x*x for x in range(10))
+
+for item in a:
+    print(item)
+
+b = (x*x for x in range(10))
+
+print(sum(b))
+
+
 def outputData(**kwargs):
     print( type(kwargs) )
     print( kwargs[ "name" ] )

@@ -4,7 +4,42 @@ from datetime import date, time, timedelta, datetime
 from dateutil.relativedelta import *
 
 from itertools import *
+
 import re
+
+q = re.search('[^0-9]{2}.{3}$', '12345foo65')
+print(q)
+
+s = 'foo123bar'
+
+q = re.search('[0-9][0-9][0-9]', s)
+print(q)
+
+
+if re.search('123', s):
+    print('match found')
+else:
+    print('no match found')
+
+s = 'foo123bar'
+x = '123' in s
+print(x)
+
+y = s.find('123')
+print(y)
+
+z = s.index('123')
+print(z)
+
+
+rx01 = re.match(r'.*([ABCDEFGHIJKLMNOPQRSTUVWXYZ])', ' Hello    my little Boy.   ,   You got to go Home qkk2464 ')
+
+# rx01 = re.match(r'[ABCDEFGHJ]+', ' Hello    my little Boy.   ,   You got to go Home qkk2464 ')
+# rs01 = re.split(r'[ABCDEFGHJ]+', ' Hello    my little Boy.   ,   You got to go Home qkk2464 ')
+
+print(rx01)
+
+
 
 rem = -6 % 2
 

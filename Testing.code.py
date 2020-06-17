@@ -74,13 +74,6 @@ print(f1)
 
 
 
-
-
-
-
-
-
-
 values = ['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
 delimiters = [' ', ';', ',', ',', ',', '']
 less_elm = [ 9, 3, 6, 2, 1]
@@ -314,6 +307,34 @@ class Fibsec:
             self.f1 = self.f2
             self.f2 = _rslt
             return _rslt
+
+
+class Fibany:
+    def __init__(self, pfibno):
+        self.fseed = Fibsec()
+        self.fseed = iter(self.fseed)
+        self.x = 1
+
+        while self.x < pfibno:
+            self.x += 1
+            next(self.fseed)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return next(self.fseed)
+
+
+fany = iter(Fibany(20))
+
+print ('\n\nFibonacci numers starting from ', 20)
+
+for i in fany:
+    if i > 10000000:
+        break
+    print(i)
+
 
 
 fb1 = iter(Fibsec())

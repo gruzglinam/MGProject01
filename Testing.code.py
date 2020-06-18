@@ -7,6 +7,41 @@ from itertools import *
 
 import re
 
+class Mig_iter():
+    def __init__(self, clstart, clend):
+        self.st_range = clstart
+        self.end_range = clend
+
+    def  __iter__(self):
+        self.curr = self.st_range
+        return self
+
+    def  __next__(self):
+        if self.curr > (self.end_range - 1):
+            raise StopIteration
+        ret_val = self.curr
+        self.curr += 1
+        return ret_val
+
+
+
+
+def mig_func(pstart, pend):
+    return Mig_iter(pstart, pend)
+
+var1 = Mig_iter(0, 15)
+
+for i in var1:
+    print(i)
+
+
+
+
+
+
+
+
+
 q = re.search('[^0-9]{2}.{3}$', '12345foo65')
 print(q)
 
@@ -311,31 +346,37 @@ class Fibsec:
 
 class Fibany:
     def __init__(self, pfibno):
+        self.fibno = pfibno
+
+    def __iter__(self):
         self.fseed = Fibsec()
         self.fseed = iter(self.fseed)
         self.x = 1
 
-        while self.x < pfibno:
+        while self.x < self.fibno:
             self.x += 1
             next(self.fseed)
-
-    def __iter__(self):
         return self
 
     def __next__(self):
         return next(self.fseed)
 
+var1 = 20
+fany = iter(Fibany(var1))
 
-fany = iter(Fibany(20))
-
-print ('\n\nFibonacci numers starting from ', 20)
+print ('\n\nFibonacci numers starting from ', var1)
 
 for i in fany:
-    if i > 10000000:
+    if i > 100000:
         break
     print(i)
 
-
+print('lets cock fany again')
+fany = iter(fany)
+for i in fany:
+    if i > 1000000:
+        break
+    print(i)
 
 fb1 = iter(Fibsec())
 

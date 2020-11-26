@@ -2,7 +2,7 @@ import math
 import re
 import MyFunctions
 import calendar
-#import python_dateutil
+# import python_dateutil
 from dateutil.relativedelta import *
 from datetime import date, time, timedelta, datetime
 
@@ -1403,8 +1403,7 @@ print(format_lt)
 yes_votes = 42_572_654
 no_votes = 43_132_495
 percentage = yes_votes / (yes_votes + no_votes)
-teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percen
-tage + 2.3)
+teststr = '{:12} YES votes {:-21.4%}'.format(yes_votes, percentage + 2.3)
 print(teststr)
 
 # Zero evaluated as false expression "If not element" apply to Zero
@@ -1919,14 +1918,14 @@ print(dic_new)
 #        print(number)
 
 
-rrr1 = fnc_cnt2("abracadabra")
-rrr1 = fnc_cnt("inerestingornot")
-rrr1 = fnc_cnt("bcdfghjklmnpqrstvqxz")
+#rrr1 = fnc_cnt2("abracadabra")
+#rrr1 = fnc_cnt("inerestingornot")
+#rrr1 = fnc_cnt("bcdfghjklmnpqrstvqxz")
 
-for item in lst_of_wovles:
-    lst_of_tup.spl = lst_of_tup[0].split()
-    if item in st_of_tup.spl == itm in lst_of_wovles:
-        lst_of_tup.num = lst_of_tup[1].split()
+#for item in lst_of_wovles:
+#    lst_of_tup.spl = lst_of_tup[0].split()
+#    if item in st_of_tup.spl == itm in lst_of_wovles:
+#        lst_of_tup.num = lst_of_tup[1].split()
 
 # tup_rslt = tpl_res()
 #    print(tup_rslt)
@@ -2230,12 +2229,12 @@ del tup
 print("After deleting tup : ")
 print(tup)
 
-var1 = lst02.index("Daughter")
-var2 = len(lst02)
-var3 = len(lst02) - 1
-var4 = lst02.count("WallE")
+#var1 = lst02.index("Daughter")
+#var2 = len(lst02)
+#var3 = len(lst02) - 1
+#var4 = lst02.count("WallE")
 lst03 = []
-lst03 = lst02.copy()
+#lst03 = lst02.copy()
 lst03.reverse()
 stack01 = []
 stack01.append(6)

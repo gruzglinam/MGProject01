@@ -257,7 +257,7 @@ xxxxx = 0
 # to_email   = 'mayya.gruzglina@outlook.com'
 # gmail_user = 'igor.sklyarskiy33@gmail.com'
 # gmail_pwd  = 'Arizona33!'
-#
+
 # smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
 # smtpserver.ehlo()
 # smtpserver.starttls()

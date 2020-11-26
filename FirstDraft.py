@@ -251,7 +251,6 @@ xxxxx = 0
 #
 # lst77 = ["?", "!", ".", ":", ";", ","]
 
-
 #   Learning how to deal with email  2020-04-03
 
 # to_email   = 'mayya.gruzglina@outlook.com'
